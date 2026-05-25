@@ -1,0 +1,175 @@
+<mxfile host="Electron">
+  <diagram id="RegAgent_Pipeline_V1" name="Page-1">
+    <mxGraphModel dx="3312" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="group_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;1. Knowledge Base (Internal)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="340" x="10" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;2. Horizon Scanning (External)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="360" x="380" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;3. Change Detection &amp;amp; HITL&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="460" x="760" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;4. Deliverables &amp;amp; Next Steps&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="380" x="1240" y="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;" value="&lt;b&gt;Legend&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="860" x="20" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_core" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Core Component" vertex="1">
+          <mxGeometry height="30" width="120" x="90" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_plug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontSize=12;fontStyle=1" value="[ Pluggable ] Component" vertex="1">
+          <mxGeometry height="30" width="170" x="230" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_ai" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="LLM Agent" vertex="1">
+          <mxGeometry height="30" width="80" x="420" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_next" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;fontSize=12;" value="Future / Next Step" vertex="1">
+          <mxGeometry height="30" width="130" x="520" y="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="kb_docs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Internal Policies&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Upload Offline PDFs&lt;br&gt;• Define Jurisdiction / Framework Scope&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="240" x="60" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_docai" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Google Cloud Document AI&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Extracts precise layout &amp;amp; text from PDFs&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_embed" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Vertex AI Embeddings&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Model: text-embedding-004&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_faiss" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;FAISS Vector Store&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Semantic Internal Knowledge Base&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="490" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_kb_1" edge="1" parent="1" source="kb_docs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="kb_docai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kb_2" edge="1" parent="1" source="kb_docai" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="kb_embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_kb_3" edge="1" parent="1" source="kb_embed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="kb_faiss">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hz_rss" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Regulatory Feeds&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• EUR-Lex &amp;amp; ESMA Live RSS&lt;br&gt;• Auto-refresh monitoring (30s)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="280" x="420" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="hz_scraper" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Webpage Content Scraper&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px&#39;&gt;Fetches and cleans HTML from detected links&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="280" x="420" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="hz_filter" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Keyword &amp;amp; Relevance Filter&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• Searches for MiFIR/Framework keywords&lt;br&gt;• Outputs JSON metadata &amp;amp; confidence scores&lt;br&gt;• Filters out non-relevant regulatory noise&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="280" x="420" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_hz" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="670" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="hz_diff" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Programmatic Diffing (Difflib)&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Alternative path for offline PDFs&lt;br&gt;• Extracts only modified lines to save tokens&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="280" x="420" y="500" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_hz_1" edge="1" parent="1" source="hz_rss" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="hz_scraper">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hz_2" edge="1" parent="1" source="hz_scraper" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="hz_filter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cd_retriever" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Multi-Strategy Retriever&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Pulls relevant chunks from FAISS&lt;br&gt;• Queries via Title, Summary, &amp;amp; Framework&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="380" x="800" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="cd_compare" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Document Comparison Engine&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• Cross-references new rule vs internal policies&lt;br&gt;• Identifies gaps &amp;amp; missing obligations&lt;br&gt;• Drafts Markdown Impact Matrix (Who/What/When)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="380" x="800" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_cd" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="1150" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="cd_hitl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;HITL: Analysis Refinement&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• User reviews Markdown Gap Matrix&lt;br&gt;• Appends memory/rules to Agent (e.g. &quot;Ignore Retail&quot;)&lt;br&gt;• LLM regenerates matrix strictly based on feedback&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="380" x="800" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="cd_final" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Confirmed Change Matrix&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Structured baseline for specific organizational changes&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="380" x="800" y="560" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_cd_1" edge="1" parent="1" source="kb_faiss" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;" target="cd_retriever">
+          <mxGeometry relative="1" as="geometry">
+             <Array as="points">
+              <mxPoint x="180" y="570" />
+              <mxPoint x="360" y="570" />
+              <mxPoint x="360" y="130" />
+              <mxPoint x="990" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_2" edge="1" parent="1" source="hz_filter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="cd_compare">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="405" />
+              <mxPoint x="750" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_3" edge="1" parent="1" source="cd_retriever" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="cd_compare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cd_4" edge="1" parent="1" source="cd_compare" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="cd_hitl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cd_5" edge="1" parent="1" source="cd_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#FF6200;" target="cd_compare">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="465" />
+              <mxPoint x="1210" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_hitl_cd" connectable="0" parent="e_cd_5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" value="&lt;b style=&#39;color:#FF6200;&#39;&gt;Adjust &amp;amp; Regenerate&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint x="-50" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_6" edge="1" parent="1" source="cd_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="cd_final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="del_gen" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Deliverables Generator&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:12px;&quot;&gt;Synthesizes Confirmed Matrix into actionable artifacts based on user selection (No AI disclaimers, ready for compliance use).&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="300" x="1280" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_del" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="1550" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="del_out" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;Exportable Artifacts&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Impact Assessment Memos&lt;br&gt;• Proposed Policy Amendments&lt;br&gt;• Change Request JIRA Tickets&lt;br&gt;• Executive Summaries&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="300" x="1280" y="420" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ns_geo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" value="&lt;b&gt;Next Step: Cross-Geography Scale&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;Deploy framework against US, APAC, and Global frameworks beyond just EU boundaries.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="300" x="1280" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="ns_scan" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" value="&lt;b&gt;Next Step: Horizontal Scan Expansion&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;Expand change detection laterally to include cyber (DORA), ESG, and Tax regulation feeds.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="300" x="1280" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="ns_scrape" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" value="&lt;b&gt;Next Step: Deep Target Web Scraping&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;Scrape targeted unstructured data from massive web-hosted documents &amp;amp; annexes efficiently.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="300" x="1280" y="740" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_del_1" edge="1" parent="1" source="cd_final" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="del_gen">
+          <mxGeometry relative="1" as="geometry">
+             <Array as="points">
+              <mxPoint x="1240" y="585" />
+              <mxPoint x="1240" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_del_2" edge="1" parent="1" source="del_gen" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="del_out">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

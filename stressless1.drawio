@@ -1,0 +1,297 @@
+<mxfile host="Electron">
+  <diagram id="YDxRQEm_MEi41hJaPiYG" name="Page-1">
+    <mxGraphModel dx="3312" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="group_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;1. Data Ingestion &amp;amp; Context Setting&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="340" x="10" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;2. AI Market Intelligence (MI)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="360" x="380" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;3. Scenario Designer &amp;amp; HITL&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="460" x="760" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="group_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;4. Execution &amp;amp; Reporting&lt;/b&gt;" vertex="1">
+          <mxGeometry height="880" width="380" x="1240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;" value="&lt;b&gt;Legend&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="860" x="20" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_core" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Core Component" vertex="1">
+          <mxGeometry height="30" width="120" x="90" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_plug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontSize=12;fontStyle=1" value="[ Pluggable ] Component" vertex="1">
+          <mxGeometry height="30" width="170" x="230" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_ai" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="LLM Agent" vertex="1">
+          <mxGeometry height="30" width="80" x="420" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_next" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;fontSize=12;" value="Future / Next Step" vertex="1">
+          <mxGeometry height="30" width="130" x="520" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_arrow" edge="1" parent="1" style="endArrow=halfCircle;html=1;dashed=1;strokeWidth=2;strokeColor=#d79b00;endSize=8;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="670" y="45" as="sourcePoint" />
+            <mxPoint x="740" y="45" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_arrow_text" connectable="0" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=11;" value="Plugs into Engine" vertex="1">
+          <mxGeometry height="20" width="120" x="750" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="d_pub_plug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Public Data&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Define Your Own Sources&lt;br&gt;• RSS, APIs(Including paid ones), Industry News&lt;br&gt;&lt;i&gt;&amp;nbsp; (Agnostic to Desk/Asset Class)&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="240" x="60" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="d_int_plug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Internal Data&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Define Your Own Intranet Sources&lt;br&gt;• Research reports, internal APIs&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="240" x="60" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_hist" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] ING Context&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:11px;&quot;&gt;• Bring Your Own Scenarios&lt;br&gt;• Upload Historical Shock for those Scenerios&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="240" x="60" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_llm_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Rule Generator&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Extracts boundary limits &amp;amp; rules&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_ctx" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="275" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_hitl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;HITL: Rules Review&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Adjust &amp;amp; Retry until satisfied&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx_final" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Finalized Framework Rules&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Passes boundaries to Scenario Designer&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="60" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="note_c3" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;size=15;" value="&lt;b&gt;Security Note (C3+ Data):&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align:left;font-size:11px;margin-top:4px;&quot;&gt;If Historical Context contains sensitive data C3 or higher (not allowed in GCP), we extract the summary/rules securely using &lt;b&gt;M365 Copilot&lt;/b&gt; before passing the synthesized rules to this agent.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="240" x="60" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hist_llm" edge="1" parent="1" source="ctx_hist" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ctx_llm_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_llm_hitl" edge="1" parent="1" source="ctx_llm_box" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ctx_hitl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_hitl_llm" edge="1" parent="1" source="ctx_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#FF6200;" target="ctx_llm_box">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="35" y="610" />
+              <mxPoint x="35" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_hitl_retry" connectable="0" parent="e_hitl_llm" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;b style=&#39;color:#FF6200;font-size:10px&#39;&gt;Retry &amp;amp; Refine&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-15" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_hitl_final" edge="1" parent="1" source="ctx_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ctx_final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_filter" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;NLP Filter &amp;amp; Deduplication&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px&#39;&gt;Pre-filters noise using keyword matching&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="280" x="420" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_class" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Post Classification&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• Extracts: Asset Types, Actors, Regions&lt;br&gt;• Determines Base Severity (1-10)&lt;br&gt;• Calculates Reliability &amp;amp; Relevance Scores&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="280" x="420" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_mi" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="670" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_group" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;LLM Event Grouping &amp;amp; Metrics&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• Groups related articles into Market Events&lt;br&gt;• Extracts Quantifiable Metrics&lt;br&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;(e.g., Supply Loss mbd, Demand drop %,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Shipping Disruption %, Duration)&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="280" x="420" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="mi_feedback" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" value="&lt;b&gt;Next Steps / Future&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;Store &amp;amp; learn from user-liked news&lt;br&gt;output based on 👍 / 👎 feedback&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="280" x="420" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="plug_prompt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Prompt Guidelines&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Context specific to Asset Class&lt;br&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;(e.g., Equities vs Commodities vs Rates)&lt;/i&gt;&lt;br&gt;• Configurable Source targeting&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="280" x="420" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="plug_rel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Relevancy Rules&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Define thresholds for inclusion&lt;br&gt;• Source weighting multipliers&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="280" x="420" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="sd_gpt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;GPT Interface&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• Pre-fills with top MI Event Severities&lt;br&gt;• User can append custom text prompts&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="380" x="800" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="sd_guard" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;AI Guardrails &amp;amp; History&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Applies the finalized ING Context rules&lt;br&gt;• Protects against unrealistic shocks&lt;br&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;(e.g., &quot;Energy shocks cap at 20%&quot;)&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="380" x="800" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="plug_port" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Bring Your Own Portfolio / Data&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Based on Desk / Asset Class Selection&lt;br&gt;• Feed Sensis, Deltas, Vegas, or Risk Factors from backend&lt;br&gt;• Engine outputs quantifiable shocks per underlying mapped here&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="380" x="800" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="sd_gen" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Scenario Generator&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;Generates [N] distinct scenario variants&lt;br&gt;(e.g., Severe, Moderate)&lt;br&gt;Outputs quantifiable shocks per underlying/factor&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="380" x="800" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_sd" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="1150" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="sd_hitl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Human-In-The-Loop (HITL) Refinement&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;• User reviews generated JSON shocks&lt;br&gt;• Provides text feedback &lt;br&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;(e.g., &quot;Make Brent variant push to +25%&quot;)&lt;/i&gt;&lt;br&gt;• Option to 👍/👎 AI output quality&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="380" x="800" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="sd_agree" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Confirmed Scenario Matrix&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Finalized numerical shocks per ticker/asset/factor&lt;/i&gt;" vertex="1">
+          <mxGeometry height="50" width="380" x="800" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_engine" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Mathematical Execution Engine&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:12px;&quot;&gt;• Manual Tweak Terminal to Adjust values (Data Editor)&lt;br&gt;• Simulates PnL Impact (e.g., Delta/Vega, Beta)&lt;br&gt;• Aggregates Top Risk Drivers&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="300" x="1280" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_report" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Executive Summary &amp;amp; Reporting&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left;font-size:12px;&quot;&gt;• Synthesizes Rules, Narrative, and Calculation result&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;e.g Total PnL&lt;br&gt;• Generates authoritative CRO Report&lt;br&gt;• Exports Full Matrix to CSV&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="300" x="1280" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_rep" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;LLM&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="1550" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="ex_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;Risk Manager / CRO&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:11px;&#39;&gt;Assesses PnL and takes strategic action&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="300" x="1280" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pub_filter" edge="1" parent="1" source="d_pub_plug" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="mi_filter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="195" />
+              <mxPoint x="360" y="185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_int_filter" edge="1" parent="1" source="d_int_plug" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="mi_filter">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="285" />
+              <mxPoint x="360" y="185" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_filter_class" edge="1" parent="1" source="mi_filter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="mi_class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_class_group" edge="1" parent="1" source="mi_class" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="mi_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_group_feed" edge="1" parent="1" source="mi_group" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;" target="mi_feedback">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prompt_class" edge="1" parent="1" source="plug_prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="mi_class">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="700" />
+              <mxPoint x="390" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_rel_class" edge="1" parent="1" source="plug_rel" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="mi_class">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="805" />
+              <mxPoint x="370" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_group_sd" edge="1" parent="1" source="mi_group" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_gpt">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="425" />
+              <mxPoint x="740" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_group_sd" connectable="0" parent="e_group_sd" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;direction=south;" value="&lt;b&gt;Extracts live events&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.3" as="geometry">
+            <mxPoint x="-30" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_final_guard" edge="1" parent="1" source="ctx_final" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_guard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="710" />
+              <mxPoint x="350" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_final_guard" connectable="0" parent="e_final_guard" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;direction=south;" value="&lt;b&gt;Feeds ING Callibrations&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-5" y="100" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_input_gen" edge="1" parent="1" source="sd_gpt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="210" />
+              <mxPoint x="770" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_guard_gen" edge="1" parent="1" source="sd_guard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="310" />
+              <mxPoint x="780" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_port_gen" edge="1" parent="1" source="plug_port" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="sd_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gen_hitl" edge="1" parent="1" source="sd_gen" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_hitl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_gen_hitl" connectable="0" parent="e_gen_hitl" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" value="&lt;b&gt;Drafts Shocks&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_hitl_gen" edge="1" parent="1" source="sd_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#FF6200;" target="sd_gen">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="685" />
+              <mxPoint x="1210" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_hitl_gen" connectable="0" parent="e_hitl_gen" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" value="&lt;b style=&#39;color:#FF6200;&#39;&gt;Adjust &amp;amp; Regenerate&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint x="-50" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_hitl_agree" edge="1" parent="1" source="sd_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="sd_agree">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agree_ex" edge="1" parent="1" source="sd_agree" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ex_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="805" />
+              <mxPoint x="1220" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_agree_ex" connectable="0" parent="e_agree_ex" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" value="&lt;b&gt;Pass shock targets&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.4" as="geometry">
+            <mxPoint y="100" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_model_ex" edge="1" parent="1" source="plug_model" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" target="ex_engine">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1260" y="385" />
+              <mxPoint x="1260" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ex_report" edge="1" parent="1" source="plug_model" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ex_report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_report_user" edge="1" parent="1" source="ex_report" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="ex_user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UHIX-w5ulZfzG9cYhtfR-2" edge="1" parent="1" source="ex_engine" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;" target="plug_model" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1430" y="280" as="sourcePoint" />
+            <mxPoint x="1430" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UHIX-w5ulZfzG9cYhtfR-3" connectable="0" parent="UHIX-w5ulZfzG9cYhtfR-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" value="&lt;b&gt;Calculation Output&lt;/b&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="plug_model" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" value="&lt;b&gt;[ Pluggable ] Bring Your Own Model&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style=&#39;text-align:left;font-size:11px;&#39;&gt;• Inject custom calculation logic&lt;br&gt;• Connect internal pricing libraries&lt;br&gt;• Swap underlying asset valuation models&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="300" x="1280" y="330" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

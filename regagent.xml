@@ -1,0 +1,311 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="RegAgent_Pipeline_V2" name="Page-1">
+    <mxGraphModel dx="1800" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Swimlanes -->
+        <mxCell id="group_1" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;1. Ingestion &amp; Knowledge Base&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="360" height="920" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_2" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;2. Horizon Scanning &amp; Selection&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="380" height="920" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_3" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;3. Comparison &amp; Change Analysis&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="800" y="100" width="430" height="920" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_4" value="&lt;b style=&quot;font-size:18px;color:#555;&quot;&gt;4. Deliverables &amp; Scale&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#e0e0e0;verticalAlign=top;align=left;spacingLeft=15;spacingTop=15;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="100" width="380" height="920" as="geometry"/>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_box" value="&lt;b&gt;Legend&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_core" value="Core Component" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="30" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_plug" value="[ Pluggable ] Input / Source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="30" width="180" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_ai" value="LLM Agent" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="430" y="30" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_user" value="User / Reviewer Output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="540" y="30" width="160" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_next" value="Future / Next Step" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="720" y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;endArrow=classic;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="45" as="sourcePoint"/>
+            <mxPoint x="940" y="45" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_arrow1_lbl" value="Current flow" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="945" y="35" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg_arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="45" as="sourcePoint"/>
+            <mxPoint x="1090" y="45" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_arrow2_lbl" value="Pluggable connector" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="35" width="105" height="20" as="geometry"/>
+        </mxCell>
+
+        <!-- Context / Scope -->
+        <mxCell id="ctx_scope" value="&lt;b&gt;[ Pluggable ] User Scope &amp; Agent Memory&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• Jurisdiction / Region&lt;br&gt;• Regulatory Framework&lt;br&gt;• Feedback Rules / Agent Memory&lt;br&gt;• Selected Document Metadata&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="150" width="260" height="95" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 1 -->
+        <mxCell id="kb_docs" value="&lt;b&gt;[ Pluggable ] Internal Policies / PDFs&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;User-uploaded internal compliance documents&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="kb_docai" value="&lt;b&gt;Google Cloud Document AI&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Precise PDF text extraction&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="270" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kb_split" value="&lt;b&gt;Text Splitter / Chunking&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;RecursiveCharacterTextSplitter&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="370" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kb_embed" value="&lt;b&gt;Vertex AI Embeddings&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;text-embedding-004&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="470" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="kb_faiss" value="&lt;b&gt;FAISS Vector Store&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Internal knowledge base index&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="70" y="570" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Manual diff subflow -->
+        <mxCell id="manual_pdfs" value="&lt;b&gt;[ Pluggable ] Manual Ad-Hoc PDFs&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Old vs new regulation PDFs&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="730" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="manual_docai" value="&lt;b&gt;Document AI Text Extraction&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Extract text from both PDFs&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="835" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="manual_diff" value="&lt;b&gt;Programmatic Diffing (difflib)&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Line-level additions / deletions&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="925" width="260" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 2 -->
+        <mxCell id="hz_rss" value="&lt;b&gt;[ Pluggable ] Regulatory Feeds&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• EUR-Lex Feed 221 / 222&lt;br&gt;• ESMA Feed&lt;br&gt;• Expandable to more sources&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="160" width="280" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="hz_cache" value="&lt;b&gt;RSS Fetch + Cache + New Item Detection&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• Feed parsing&lt;br&gt;• Cached feed comparison&lt;br&gt;• New item notification&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="450" y="280" width="280" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="hz_scraper" value="&lt;b&gt;Webpage Content Fetcher&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Pull target document content from URL&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="280" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hz_filter" value="&lt;b&gt;LLM MiFIR Keyword / Relevance Analyzer&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• Keyword detection&lt;br&gt;• Relevance tagging&lt;br&gt;• Confidence + summary&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="450" y="510" width="280" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm_hz" value="&lt;b&gt;LLM&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="690" y="495" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="hz_select" value="&lt;b&gt;User Document Selection&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;User pins selected feed item for comparison&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="450" y="640" width="280" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="hz_state" value="&lt;b&gt;Session State / Cache&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Selected doc, feed cache, analysis results&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="450" y="740" width="280" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 3 -->
+        <mxCell id="cd_retriever" value="&lt;b&gt;Multi-Strategy Retriever&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• Title-based retrieval&lt;br&gt;• Summary-based retrieval&lt;br&gt;• Framework keyword retrieval&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="840" y="190" width="340" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd_compare" value="&lt;b&gt;LLM Document Comparison Engine&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;Compare new regulatory document against internal policies to identify gaps, new obligations, and business impact&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="840" y="330" width="340" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm_cd" value="&lt;b&gt;LLM&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="315" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd_hitl" value="&lt;b&gt;HITL: Analysis Refinement&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;Compliance user refines table output and reruns comparison&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="840" y="480" width="340" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd_final" value="&lt;b&gt;Confirmed Change Matrix&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Article / Previous Obligation / New Obligation / Impact&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="840" y="620" width="340" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="manual_summary" value="&lt;b&gt;LLM Change Summary&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Translate diffs into structured regulatory change summary&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="840" y="830" width="340" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm_manual" value="&lt;b&gt;LLM&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="815" width="40" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 4 -->
+        <mxCell id="del_gen" value="&lt;b&gt;LLM Deliverables Generator&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;Generate: Impact memo, policy amendment text, JIRA ticket, executive summary, implementation timeline&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="330" width="290" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="llm_del" value="&lt;b&gt;LLM&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="315" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="del_out" value="&lt;b&gt;Exportable Artifacts&lt;/b&gt;&lt;br&gt;&lt;hr&gt;&lt;div style='text-align:left;font-size:11px;'&gt;• Markdown / text outputs&lt;br&gt;• Downloadable files&lt;br&gt;• Clipboard export&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="480" width="290" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ns_geo" value="&lt;b&gt;Next Step: Cross-Geography Scale&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Extend beyond EU to UK / US / APAC&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="650" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="ns_scan" value="&lt;b&gt;Next Step: Horizontal Scan Expansion&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Add more regulators / publication feeds&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="750" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="ns_scrape" value="&lt;b&gt;Next Step: Deep Target Web Scraping&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:11px;'&gt;Richer extraction from linked regulatory pages&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666;dashed=1;dashPattern=1 2;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="850" width="290" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges Lane 1 -->
+        <mxCell id="e_kb_1" edge="1" parent="1" source="kb_docs" target="kb_docai" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_kb_2" edge="1" parent="1" source="kb_docai" target="kb_split" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_kb_3" edge="1" parent="1" source="kb_split" target="kb_embed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_kb_4" edge="1" parent="1" source="kb_embed" target="kb_faiss" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_manual_1" edge="1" parent="1" source="manual_pdfs" target="manual_docai" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_manual_2" edge="1" parent="1" source="manual_docai" target="manual_diff" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges Lane 2 -->
+        <mxCell id="e_hz_1" edge="1" parent="1" source="hz_rss" target="hz_cache" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hz_2" edge="1" parent="1" source="hz_cache" target="hz_scraper" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hz_3" edge="1" parent="1" source="hz_scraper" target="hz_filter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hz_4" edge="1" parent="1" source="hz_filter" target="hz_select" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_hz_5" edge="1" parent="1" source="hz_select" target="hz_state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges into comparison -->
+        <mxCell id="e_cd_1" edge="1" parent="1" source="kb_faiss" target="cd_retriever" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="600"/>
+              <mxPoint x="360" y="150"/>
+              <mxPoint x="1010" y="150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_2" edge="1" parent="1" source="hz_select" target="cd_compare" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="670"/>
+              <mxPoint x="760" y="380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_3" edge="1" parent="1" source="cd_retriever" target="cd_compare" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cd_4" edge="1" parent="1" source="cd_compare" target="cd_hitl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cd_5" edge="1" parent="1" source="cd_hitl" target="cd_compare" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;strokeColor=#FF6200;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="525"/>
+              <mxPoint x="1210" y="380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_hitl_cd" value="&lt;b style='color:#FF6200;'&gt;Refine &amp; Rerun&lt;/b&gt;" connectable="0" parent="e_cd_5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fillColor=#ffffff;" vertex="1">
+          <mxGeometry relative="1" x="0.1" as="geometry">
+            <mxPoint x="-40" y="10" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_cd_6" edge="1" parent="1" source="cd_hitl" target="cd_final" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Manual diff into analysis -->
+        <mxCell id="e_manual_3" edge="1" parent="1" source="manual_diff" target="manual_summary" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="955"/>
+              <mxPoint x="380" y="870"/>
+              <mxPoint x="820" y="870"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_manual_4" edge="1" parent="1" source="manual_summary" target="cd_final" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1210" y="870"/>
+              <mxPoint x="1210" y="650"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Context edges -->
+        <mxCell id="e_ctx_1" edge="1" parent="1" source="ctx_scope" target="hz_filter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1290" y="200"/>
+              <mxPoint x="1290" y="555"/>
+              <mxPoint x="740" y="555"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ctx_2" edge="1" parent="1" source="ctx_scope" target="cd_compare" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1290" y="200"/>
+              <mxPoint x="1290" y="380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_ctx_3" edge="1" parent="1" source="ctx_scope" target="del_gen" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;dashed=1;endArrow=halfCircle;endSize=8;strokeColor=#d79b00;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="260"/>
+              <mxPoint x="1450" y="320"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Deliverables -->
+        <mxCell id="e_del_1" edge="1" parent="1" source="cd_final" target="del_gen" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1230" y="650"/>
+              <mxPoint x="1230" y="380"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_del_2" edge="1" parent="1" source="del_gen" target="del_out" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Next step connections -->
+        <mxCell id="e_ns_1" edge="1" parent="1" source="del_out" target="ns_geo" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=1;dashed=1;strokeColor=#666;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ns_2" edge="1" parent="1" source="del_out" target="ns_scan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=1;dashed=1;strokeColor=#666;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ns_3" edge="1" parent="1" source="del_out" target="ns_scrape" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeWidth=1;dashed=1;strokeColor=#666;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

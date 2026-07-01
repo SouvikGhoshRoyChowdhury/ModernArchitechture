@@ -1,0 +1,407 @@
+<mxfile host="Electron" modified="2026-07-01T17:30:00.000Z" agent="draw.io" version="24.0.0">
+  <diagram id="MAPPS_Architecture" name="MAPPS Platform Architecture">
+    <mxGraphModel dx="4000" dy="3000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4200" pageHeight="2800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;fontColor=#333333;" value="MAPPS Platform — Architecture Overview" vertex="1">
+          <mxGeometry x="1400" y="20" width="600" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROW LEGEND ==================== -->
+        <mxCell id="legend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;dashed=1;" value="&lt;b style=&quot;font-size:13px;&quot;&gt;Legend — Arrow Colors&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="20" width="1100" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_data" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#1565C0;strokeColor=none;fontSize=10;rotation=0;" value="" vertex="1">
+          <mxGeometry x="120" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_data_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Data Flow" vertex="1">
+          <mxGeometry x="155" y="35" width="70" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_api" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#2E7D32;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="240" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_api_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="API Call" vertex="1">
+          <mxGeometry x="275" y="35" width="60" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_msg" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#E65100;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="350" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_msg_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Messaging/Queue" vertex="1">
+          <mxGeometry x="385" y="35" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_deploy" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#6A1B9A;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="500" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_deploy_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Deployment/CI-CD" vertex="1">
+          <mxGeometry x="535" y="35" width="105" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_monitor" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#FF6F00;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="655" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_monitor_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Monitoring/Alerts" vertex="1">
+          <mxGeometry x="690" y="35" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_incident" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#C62828;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="805" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_incident_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Incident/Support" vertex="1">
+          <mxGeometry x="840" y="35" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_secret" parent="1" style="shape=mxgraph.arrows2.arrow;whiteSpace=wrap;html=1;fillColor=#00695C;strokeColor=none;fontSize=10;" value="" vertex="1">
+          <mxGeometry x="955" y="42" width="30" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_line_secret_lbl" parent="1" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;" value="Secrets/Credentials" vertex="1">
+          <mxGeometry x="990" y="35" width="110" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 1: FRONTEND / UI LAYER ==================== -->
+        <mxCell id="bnd_frontend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#1565C0;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#1565C0;&quot;&gt;Frontend / UI Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="100" width="520" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_java" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/java-coffee-cup-logo.png;fontSize=10;fontStyle=1;" tooltip="Java-based UI Element Framework" value="Java UI" vertex="1">
+          <mxGeometry x="80" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_webcomp" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/web.png;fontSize=10;fontStyle=1;" tooltip="MAPPS Web Component — Report Viewer, Config Manager, Job Monitor" value="Web Component" vertex="1">
+          <mxGeometry x="200" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_report" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/combo-chart.png;fontSize=10;fontStyle=1;" tooltip="Report Viewer — Displays CapFloor, Bermudan, Swaption results" value="Report Viewer" vertex="1">
+          <mxGeometry x="80" y="240" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_config" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/settings.png;fontSize=10;fontStyle=1;" tooltip="Config Manager — SysConfig, Scheduler, Adapter settings" value="Config Mgr" vertex="1">
+          <mxGeometry x="200" y="240" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_jobmon" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/job.png;fontSize=10;fontStyle=1;" tooltip="Job Monitor — Real-time task queue, worker health" value="Job Monitor" vertex="1">
+          <mxGeometry x="320" y="240" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_userreq" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/request-service.png;fontSize=10;fontStyle=1;" tooltip="User Request &amp; Deployment Signoff" value="User Request" vertex="1">
+          <mxGeometry x="440" y="240" width="44" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_users" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/conference-call.png;fontSize=10;fontStyle=1;" tooltip="Business Users / TRM Team" value="Business Users" vertex="1">
+          <mxGeometry x="320" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 2: BACKEND / API GATEWAY ==================== -->
+        <mxCell id="bnd_backend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#2E7D32;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#2E7D32;&quot;&gt;Backend / API Gateway&lt;/b&gt;" vertex="1">
+          <mxGeometry x="620" y="100" width="560" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_nginx" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/nginx.png;fontSize=10;fontStyle=1;" tooltip="NGINX Reverse Proxy — Routes, Load Balances, TLS termination" value="NGINX" vertex="1">
+          <mxGeometry x="660" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_python" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/python.png;fontSize=10;fontStyle=1;" tooltip="Python Flask REST API — Core application backend" value="Flask API" vertex="1">
+          <mxGeometry x="790" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_celery" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/task.png;fontSize=10;fontStyle=1;" tooltip="Celery Task Queue — Async job submission and processing" value="Task Queue" vertex="1">
+          <mxGeometry x="920" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_scheduler" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/schedule.png;fontSize=10;fontStyle=1;" tooltip="Scheduler — Reads SysConfig, dispatches jobs to queue" value="Scheduler" vertex="1">
+          <mxGeometry x="1050" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_worker" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/worker-male.png;fontSize=10;fontStyle=1;" tooltip="Workers — Execute compute tasks, run models/adapters" value="Workers" vertex="1">
+          <mxGeometry x="660" y="260" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_dc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/hub.png;fontSize=10;fontStyle=1;" tooltip="Data Controller — MAPPS provides interface for adapters" value="Data Controller" vertex="1">
+          <mxGeometry x="790" y="260" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_adapter" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/connected.png;fontSize=10;fontStyle=1;" tooltip="Adapter — TRM-specific implementation connecting to external systems via Data Controller" value="Adapter" vertex="1">
+          <mxGeometry x="920" y="260" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== TRM GENERIC LIBRARY (Req 8) ==================== -->
+        <mxCell id="bnd_trm_lib" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#0277BD;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;dashed=1;" value="&lt;b style=&quot;font-size:14px;color:#0277BD;&quot;&gt;TRM Generic Library&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1240" y="100" width="440" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_library" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/library.png;fontSize=10;fontStyle=1;" tooltip="TRM Generic Library — Reusable components on top of MAPPS Data Controller" value="TRM Library" vertex="1">
+          <mxGeometry x="1280" y="140" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="box_generic" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#0277BD;fontSize=11;fontStyle=0;" value="&lt;b&gt;Generic Layer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;&quot;&gt;Common utilities reusable&lt;br&gt;by multiple adapters&lt;/font&gt;" vertex="1" tooltip="Generic part that sits on top of Data Controller, providing shared functionality across all adapters">
+          <mxGeometry x="1370" y="140" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="box_adapter1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;" value="Adapter A" vertex="1" tooltip="Specific adapter implementation using TRM Generic Library">
+          <mxGeometry x="1280" y="230" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_adapter2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;" value="Adapter B" vertex="1" tooltip="Another adapter implementation reusing TRM Generic Library">
+          <mxGeometry x="1400" y="230" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_adapter3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=10;" value="Adapter C" vertex="1" tooltip="Yet another adapter reusing TRM Generic Library">
+          <mxGeometry x="1520" y="230" width="100" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_dc_interface" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=10;" value="&lt;b&gt;MAPPS Data Controller&lt;/b&gt;&lt;br&gt;(Base Interface)" vertex="1" tooltip="Base Data Controller interface provided by MAPPS that TRM Library extends">
+          <mxGeometry x="1330" y="300" width="170" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 3: PROCESSING / COMPUTE ==================== -->
+        <mxCell id="bnd_processing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#F57F17;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#F57F17;&quot;&gt;Processing / Compute Engine&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="500" width="780" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_kernel" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/processor.png;fontSize=10;fontStyle=1;" tooltip="Compute Kernel — Core calculation engine for pricing models" value="Kernel" vertex="1">
+          <mxGeometry x="80" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_models" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/math.png;fontSize=10;fontStyle=1;" tooltip="Pricing Models — CapFloor, Bermudan, Swaption" value="Models" vertex="1">
+          <mxGeometry x="200" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_docker" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/docker.png;fontSize=10;fontStyle=1;" tooltip="Docker — Containerized compute environment" value="Docker" vertex="1">
+          <mxGeometry x="320" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_sysconfig" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/administrative-tools.png;fontSize=10;fontStyle=1;" tooltip="SysConfig — System configuration parameters for scheduler" value="SysConfig" vertex="1">
+          <mxGeometry x="440" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_redis" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/redis.png;fontSize=10;fontStyle=1;" tooltip="Redis — Message broker for Celery task queue" value="Redis" vertex="1">
+          <mxGeometry x="560" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_result_store" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/database-restore.png;fontSize=10;fontStyle=1;" tooltip="Result Store — Persists computed results" value="Result Store" vertex="1">
+          <mxGeometry x="680" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 4: DATA / STORAGE ==================== -->
+        <mxCell id="bnd_data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#C62828;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#C62828;&quot;&gt;Data / Storage Layer&lt;/b&gt;" vertex="1">
+          <mxGeometry x="880" y="500" width="520" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_sqldb" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/sql.png;fontSize=10;fontStyle=1;" tooltip="SQL Database — Stores configs, job metadata, results" value="SQL DB" vertex="1">
+          <mxGeometry x="920" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_s3" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/amazon-s3.png;fontSize=10;fontStyle=1;" tooltip="S3 / Blob Storage — Large file storage for reports" value="S3 Storage" vertex="1">
+          <mxGeometry x="1040" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_kafka" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/apache-kafka.png;fontSize=10;fontStyle=1;" tooltip="Kafka — Event streaming, publishes computed results" value="Kafka" vertex="1">
+          <mxGeometry x="1160" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_schema" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/schema.png;fontSize=10;fontStyle=1;" tooltip="Schema Registry — Validates event schemas" value="Schema Registry" vertex="1">
+          <mxGeometry x="1280" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 5: EXTERNAL SYSTEMS ==================== -->
+        <mxCell id="bnd_external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#6A1B9A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#6A1B9A;&quot;&gt;External Systems&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1460" y="500" width="440" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_extfeed" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/rss.png;fontSize=10;fontStyle=1;" tooltip="External Data Feeds — Market data, reference data" value="Data Feeds" vertex="1">
+          <mxGeometry x="1500" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_downstream" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/genealogy.png;fontSize=10;fontStyle=1;" tooltip="Downstream Systems — Consumers of published results" value="Downstream" vertex="1">
+          <mxGeometry x="1620" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_git" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/git.png;fontSize=10;fontStyle=1;" tooltip="Git — Source control for all code and configuration" value="Git" vertex="1">
+          <mxGeometry x="1740" y="550" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 6: DEPLOYMENT &amp; RELEASE (Azure Icons) ==================== -->
+        <mxCell id="bnd_deploy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#6A1B9A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#6A1B9A;&quot;&gt;Deployment &amp;amp; Release&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="880" width="900" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azdevops" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-devops.png;fontSize=10;fontStyle=1;" tooltip="Azure DevOps — OnePipeline CI/CD" value="Azure DevOps" vertex="1">
+          <mxGeometry x="80" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azpipeline" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/azure-pipelines.png;fontSize=10;fontStyle=1;" tooltip="Azure Pipelines — Build, Test, Deploy automation" value="Pipelines" vertex="1">
+          <mxGeometry x="210" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azacr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/azure-container-registry.png;fontSize=10;fontStyle=1;" tooltip="Azure Container Registry — Docker image repository" value="ACR" vertex="1">
+          <mxGeometry x="340" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azaks" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/azure-kubernetes-service.png;fontSize=10;fontStyle=1;" tooltip="Azure Kubernetes Service — Container orchestration" value="AKS" vertex="1">
+          <mxGeometry x="470" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azkeyvault" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/azure-key-vault.png;fontSize=10;fontStyle=1;" tooltip="Azure Key Vault — Stores credentials, secrets, certificates used by MAPPS" value="Key Vault" vertex="1">
+          <mxGeometry x="600" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_azmonitor" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/azure-monitor.png;fontSize=10;fontStyle=1;" tooltip="Azure Monitor — Application Insights, metrics collection" value="Azure Monitor" vertex="1">
+          <mxGeometry x="730" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_helm" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/helm.png;fontSize=10;fontStyle=1;" tooltip="Helm Charts — Kubernetes deployment configuration" value="Helm" vertex="1">
+          <mxGeometry x="860" y="930" width="56" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="box_build" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#6A1B9A;fontSize=10;" value="&lt;b&gt;Build &amp;amp; Test&lt;/b&gt;" vertex="1" tooltip="Automated build and test pipeline in Azure DevOps">
+          <mxGeometry x="80" y="1060" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_push" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#6A1B9A;fontSize=10;" value="&lt;b&gt;Push to ACR&lt;/b&gt;" vertex="1" tooltip="Push Docker image to Azure Container Registry">
+          <mxGeometry x="250" y="1060" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_deploy_aks" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE7F6;strokeColor=#6A1B9A;fontSize=10;" value="&lt;b&gt;Deploy to AKS&lt;/b&gt;" vertex="1" tooltip="Deploy containers to Azure Kubernetes Service">
+          <mxGeometry x="420" y="1060" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_secrets" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=10;" value="&lt;b&gt;Fetch Credentials&lt;/b&gt;" vertex="1" tooltip="MAPPS fetches credentials from Azure Key Vault at runtime">
+          <mxGeometry x="590" y="1060" width="130" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="box_monitor_deploy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF6F00;fontSize=10;" value="&lt;b&gt;Monitor &amp;amp; Alert&lt;/b&gt;" vertex="1" tooltip="Azure Monitor watches deployed services">
+          <mxGeometry x="770" y="1060" width="120" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 7: MAINTENANCE &amp; SUPPORT ==================== -->
+        <mxCell id="bnd_maintenance" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#C62828;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#C62828;&quot;&gt;Maintenance &amp;amp; Support&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1000" y="880" width="900" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_user_incident" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/conference-call.png;fontSize=10;fontStyle=1;" tooltip="Users report incidents" value="Users" vertex="1">
+          <mxGeometry x="1040" y="930" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_incident" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/error--v1.png;fontSize=10;fontStyle=1;" tooltip="Incident Created — Users raise issues" value="Incident" vertex="1">
+          <mxGeometry x="1180" y="930" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_trm_support" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/technical-support.png;fontSize=10;fontStyle=1;" tooltip="TRM Support Team — Investigates and fixes issues" value="TRM Fix" vertex="1">
+          <mxGeometry x="1320" y="930" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_snow" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/service-bell.png;fontSize=10;fontStyle=1;" tooltip="ServiceNow (SNOW) — Infra tickets raised to MAPPS team" value="SNOW Ticket" vertex="1">
+          <mxGeometry x="1480" y="930" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_mapps_infra" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/server.png;fontSize=10;fontStyle=1;" tooltip="MAPPS Infrastructure Team — Handles infra-related issues" value="MAPPS Infra" vertex="1">
+          <mxGeometry x="1640" y="930" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_email_alert" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/email.png;fontSize=10;fontStyle=1;" tooltip="Email Alerts — Failure and anomaly notifications" value="Email Alert" vertex="1">
+          <mxGeometry x="1320" y="1080" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_teams" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/microsoft-teams-2019.png;fontSize=10;fontStyle=1;" tooltip="Microsoft Teams — Channel alerts for failures/anomalies" value="Teams Channel" vertex="1">
+          <mxGeometry x="1500" y="1080" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_alert_source" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/alarm.png;fontSize=10;fontStyle=1;" tooltip="Monitoring Alerts — Triggered on failure or anomaly" value="Alerts" vertex="1">
+          <mxGeometry x="1100" y="1080" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SECTION 8: OBSERVABILITY ==================== -->
+        <mxCell id="bnd_observability" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#00695C;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;arcSize=6;" value="&lt;b style=&quot;font-size:14px;color:#00695C;&quot;&gt;Observability&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1960" y="100" width="360" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_grafana" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/grafana.png;fontSize=10;fontStyle=1;" tooltip="Grafana — Dashboards, metrics visualization" value="Grafana" vertex="1">
+          <mxGeometry x="2000" y="160" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_prometheus" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/prometheus-app.png;fontSize=10;fontStyle=1;" tooltip="Prometheus — Metrics collection and alerting" value="Prometheus" vertex="1">
+          <mxGeometry x="2120" y="160" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_logging" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/log.png;fontSize=10;fontStyle=1;" tooltip="Centralized Logging — ELK / Azure Log Analytics" value="Logging" vertex="1">
+          <mxGeometry x="2000" y="280" width="48" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="ico_tracing" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/search-in-list.png;fontSize=10;fontStyle=1;" tooltip="Distributed Tracing — Request tracing across services" value="Tracing" vertex="1">
+          <mxGeometry x="2120" y="280" width="48" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: FRONTEND → BACKEND ==================== -->
+        <mxCell id="arr_fe_nginx" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_frontend" target="bnd_backend" value="REST API">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="275" />
+              <mxPoint x="590" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== ARROWS: BACKEND → PROCESSING ==================== -->
+        <mxCell id="arr_be_proc" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E65100;strokeWidth=2;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_backend" target="bnd_processing" value="Task Dispatch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="788" y="470" />
+              <mxPoint x="430" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== ARROWS: PROCESSING → DATA ==================== -->
+        <mxCell id="arr_proc_data" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_processing" target="bnd_data" value="Persist Results">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: DATA → EXTERNAL ==================== -->
+        <mxCell id="arr_data_ext" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_data" target="bnd_external" value="Publish Events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: EXTERNAL → BACKEND (Data Feeds) ==================== -->
+        <mxCell id="arr_ext_be" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_external" target="bnd_backend" value="Market Data">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1680" y="470" />
+              <mxPoint x="1200" y="470" />
+              <mxPoint x="1200" y="345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== ARROWS: BACKEND → TRM LIBRARY ==================== -->
+        <mxCell id="arr_be_lib" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="bnd_backend" target="bnd_trm_lib" value="Uses Library">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: TRM LIBRARY → DATA CONTROLLER ==================== -->
+        <mxCell id="arr_lib_dc" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="box_generic" target="box_dc_interface" value="Extends">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: ADAPTERS → GENERIC LIBRARY ==================== -->
+        <mxCell id="arr_adpA_lib" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277BD;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=9;" edge="1" source="box_adapter1" target="box_generic" value="reuse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_adpB_lib" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277BD;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=9;" edge="1" source="box_adapter2" target="box_generic" value="reuse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_adpC_lib" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0277BD;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=9;" edge="1" source="box_adapter3" target="box_generic" value="reuse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: DEPLOY FLOW ==================== -->
+        <mxCell id="arr_build_push" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="box_build" target="box_push" value="Image">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_push_deploy" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="box_push" target="box_deploy_aks" value="Deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_deploy_secrets" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00695C;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="box_deploy_aks" target="box_secrets" value="Secrets">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_secrets_monitor" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="box_secrets" target="box_monitor_deploy" value="Monitor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: MAINTENANCE FLOW ==================== -->
+        <mxCell id="arr_user_incident" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C62828;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_user_incident" target="ico_incident" value="Create Incident">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_incident_trm" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C62828;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_incident" target="ico_trm_support" value="Assign to TRM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_trm_snow" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C62828;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_trm_support" target="ico_snow" value="Infra Issue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_snow_mapps" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C62828;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_snow" target="ico_mapps_infra" value="SNOW to MAPPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: ALERTS FLOW -->
+        <mxCell id="arr_alert_email" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_alert_source" target="ico_email_alert" value="Email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_alert_teams" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;" edge="1" source="ico_email_alert" target="ico_teams" value="Teams">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ARROWS: OBSERVABILITY CONNECTIONS ==================== -->
+        <mxCell id="arr_be_obs" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=1.5;dashed=1;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=9;" edge="1" source="bnd_trm_lib" target="bnd_observability" value="Metrics/Logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1720" y="170" />
+              <mxPoint x="1720" y="275" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== ARROWS: KEY VAULT → BACKEND ==================== -->
+        <mxCell id="arr_kv_backend" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00695C;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;dashed=1;" edge="1" source="ico_azkeyvault" target="bnd_backend" value="Credentials">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="628" y="860" />
+              <mxPoint x="900" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== ARROWS: OBSERVABILITY → MAINTENANCE ALERTS ==================== -->
+        <mxCell id="arr_obs_alerts" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;fontSize=10;fontStyle=1;dashed=1;" edge="1" source="bnd_observability" target="ico_alert_source" value="Anomaly/Failure">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2140" y="860" />
+              <mxPoint x="1124" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

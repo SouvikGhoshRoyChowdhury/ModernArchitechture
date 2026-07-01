@@ -386,7 +386,7 @@
         <mxCell id="ico_azdevops" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-devops.png;fontSize=10;fontStyle=1;" tooltip="OnePipeline — Azure DevOps CI/CD" value="OnePipeline" vertex="1">
           <mxGeometry x="1830" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_build" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/rocket.png;fontSize=10;fontStyle=1;" tooltip="Build & Test — Automated Pipeline" value="Build & Test" vertex="1">
+        <mxCell id="ico_build" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/rocket.png;fontSize=10;fontStyle=1;" tooltip="Build &amp; Test — Automated Pipeline" value="Build &amp; Test" vertex="1">
           <mxGeometry x="2030" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
         <mxCell id="ico_signoff_prod" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/verified-badge.png;fontSize=10;fontStyle=1;" tooltip="Signoff for Prod — Change Management" value="Signoff" vertex="1">

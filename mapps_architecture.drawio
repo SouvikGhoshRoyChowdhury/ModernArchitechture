@@ -43,19 +43,19 @@
         </mxCell>
 
         <!-- Icons with text below -->
-        <mxCell id="ico_users" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/user-group-man-man.png;fontSize=10;fontStyle=1;" value="Business Users&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;TRM Analysts / Quants&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_users" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/user-group-man-man.png;fontSize=10;fontStyle=1;" tooltip="Business Users — TRM Analysts / Quants" value="Users" vertex="1">
           <mxGeometry x="80" y="115" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_sso" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/lock-2.png;fontSize=10;fontStyle=1;" value="ING SSO&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;SAML / OAuth2&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_sso" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/lock-2.png;fontSize=10;fontStyle=1;" tooltip="ING SSO — SAML / OAuth2 Authentication" value="SSO" vertex="1">
           <mxGeometry x="300" y="115" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_matrix" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/grid-2.png;fontSize=10;fontStyle=1;" value="Access Matrix&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;RBAC Policies&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_matrix" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/grid-2.png;fontSize=10;fontStyle=1;" tooltip="Access Matrix — RBAC Policies" value="Access Matrix" vertex="1">
           <mxGeometry x="530" y="115" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_ace" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/shield.png;fontSize=10;fontStyle=1;" value="ACE Engine&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Policy Enforcement&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_ace" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/shield.png;fontSize=10;fontStyle=1;" tooltip="ACE Engine — Policy Enforcement" value="ACE" vertex="1">
           <mxGeometry x="760" y="115" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_session" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/checkmark.png;fontSize=10;fontStyle=1;" value="Authorized&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Session / Token&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_session" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/checkmark.png;fontSize=10;fontStyle=1;" tooltip="Authorized Session / Token" value="Authorized" vertex="1">
           <mxGeometry x="990" y="115" width="64" height="64" as="geometry" />
         </mxCell>
 
@@ -80,28 +80,28 @@
           <mxGeometry x="40" y="290" width="720" height="250" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_java" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/java-coffee-cup-logo.png;fontSize=10;fontStyle=1;" value="MAPPS Web Component&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Java UI Framework&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_java" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/java-coffee-cup-logo.png;fontSize=10;fontStyle=1;" tooltip="MAPPS Web Component — Java UI Framework" value="Web Component" vertex="1">
           <mxGeometry x="80" y="335" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_report_view" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/combo-chart.png;fontSize=9;" value="Report Viewer" vertex="1">
+        <mxCell id="ico_report_view" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/combo-chart.png;fontSize=9;" tooltip="Report Viewer" value="Reports" vertex="1">
           <mxGeometry x="210" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_config_mgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/settings.png;fontSize=9;" value="Config Manager" vertex="1">
+        <mxCell id="ico_config_mgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/settings.png;fontSize=9;" tooltip="Config Manager" value="Config" vertex="1">
           <mxGeometry x="310" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_jobmon" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/activity-monitor.png;fontSize=9;" value="Job Monitor" vertex="1">
+        <mxCell id="ico_jobmon" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/activity-monitor.png;fontSize=9;" tooltip="Job Monitor" value="Jobs" vertex="1">
           <mxGeometry x="410" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_s3mgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/cloud-storage.png;fontSize=9;" value="S3 Manager" vertex="1">
+        <mxCell id="ico_s3mgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/cloud-storage.png;fontSize=9;" tooltip="S3 Manager" value="S3" vertex="1">
           <mxGeometry x="510" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_kafkamgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/message-exchange.png;fontSize=9;" value="Kafka Manager" vertex="1">
+        <mxCell id="ico_kafkamgr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/message-exchange.png;fontSize=9;" tooltip="Kafka Manager" value="Kafka" vertex="1">
           <mxGeometry x="610" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_gmdb" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/database.png;fontSize=9;" value="GMDB Manager" vertex="1">
+        <mxCell id="ico_gmdb" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/database.png;fontSize=9;" tooltip="GMDB Manager" value="GMDB" vertex="1">
           <mxGeometry x="210" y="430" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_signoff" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/signing-a-document.png;fontSize=9;" value="Deployment Signoff" vertex="1">
+        <mxCell id="ico_signoff" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/signing-a-document.png;fontSize=9;" tooltip="Deployment Signoff" value="Signoff" vertex="1">
           <mxGeometry x="350" y="430" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -112,22 +112,22 @@
           <mxGeometry x="800" y="290" width="740" height="250" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_nginx" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/nginx.png;fontSize=10;fontStyle=1;" value="NGINX&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;WSGI / Reverse Proxy&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_nginx" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/nginx.png;fontSize=10;fontStyle=1;" tooltip="NGINX — WSGI / Reverse Proxy" value="NGINX" vertex="1">
           <mxGeometry x="840" y="335" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_flask" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/ios/96/flask.png;fontSize=10;fontStyle=1;" value="Flask API&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;REST (Port)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_flask" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/ios/96/flask.png;fontSize=10;fontStyle=1;" tooltip="Flask API — REST (Port)" value="Flask API" vertex="1">
           <mxGeometry x="980" y="335" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_flask_def" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/document.png;fontSize=9;" value="Flask API Definition&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;(Python Dict — task config)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_flask_def" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/document.png;fontSize=9;" tooltip="Flask API Definition — Python Dict task config" value="API Def" vertex="1">
           <mxGeometry x="980" y="435" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_dc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/hub.png;fontSize=10;fontStyle=1;" value="Data Controller Interface&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;MAPPS exposes to TRM&lt;/font&gt;" vertex="1" tooltip="Data Controller Interface provided by MAPPS. Adapter connects external systems through this.">
+        <mxCell id="ico_dc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/hub.png;fontSize=10;fontStyle=1;" tooltip="Data Controller Interface — MAPPS exposes to TRM" value="Data Controller" vertex="1">
           <mxGeometry x="1170" y="335" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_auth" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/key.png;fontSize=9;" value="Auth Module&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Ext. Data Source Auth&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_auth" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/key.png;fontSize=9;" tooltip="Auth Module — External Data Source Authentication" value="Auth" vertex="1">
           <mxGeometry x="1340" y="335" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_internal" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/transfer.png;fontSize=9;" value="Internal Comm&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Inter-service&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_internal" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/transfer.png;fontSize=9;" tooltip="Internal Communication — Inter-service" value="Internal Comm" vertex="1">
           <mxGeometry x="1440" y="335" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -149,22 +149,22 @@
           <mxGeometry x="40" y="580" width="1500" height="340" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_scheduler" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/clock.png;fontSize=10;fontStyle=1;" value="Scheduler&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Reads config from Storage&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_scheduler" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/clock.png;fontSize=10;fontStyle=1;" tooltip="Scheduler — Reads config from Storage" value="Scheduler" vertex="1">
           <mxGeometry x="80" y="640" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_redis" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/redis.png;fontSize=10;fontStyle=1;" value="Task Queue&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Redis / Celery Broker&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_redis" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/redis.png;fontSize=10;fontStyle=1;" tooltip="Task Queue — Redis / Celery Broker" value="Task Queue" vertex="1">
           <mxGeometry x="310" y="640" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_celery" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/engineering.png;fontSize=10;fontStyle=1;" value="Celery Workers&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Async Execution&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_celery" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/engineering.png;fontSize=10;fontStyle=1;" tooltip="Celery Workers — Async Execution" value="Workers" vertex="1">
           <mxGeometry x="540" y="640" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_model" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/brain.png;fontSize=10;fontStyle=1;" value="Model / Kernel&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Domain Logic (Python)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_model" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/brain.png;fontSize=10;fontStyle=1;" tooltip="Model / Kernel — Domain Logic (Python)" value="Model/Kernel" vertex="1">
           <mxGeometry x="310" y="770" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_adapter" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/plug-2.png;fontSize=10;fontStyle=1;" value="Adapter&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Implements Model/Kernel&lt;br&gt;Connects via Data Controller&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_adapter" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/plug-2.png;fontSize=10;fontStyle=1;" tooltip="Adapter — Implements Model/Kernel, Connects via Data Controller" value="Adapter" vertex="1">
           <mxGeometry x="600" y="770" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_report_gen" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/report-card.png;fontSize=10;fontStyle=1;" value="Report Generation&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Output of Process Run&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_report_gen" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/report-card.png;fontSize=10;fontStyle=1;" tooltip="Report Generation — Output of Process Run" value="Report Gen" vertex="1">
           <mxGeometry x="900" y="770" width="56" height="56" as="geometry" />
         </mxCell>
 
@@ -200,19 +200,19 @@
           <mxGeometry x="1580" y="580" width="560" height="340" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_s3" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/amazon-s3.png;fontSize=10;fontStyle=1;" value="S3 Storage&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Ext. data (raw/preprocessed)&lt;br&gt;Cache for Adapter&lt;br&gt;Intermediate Results&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_s3" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/amazon-s3.png;fontSize=10;fontStyle=1;" tooltip="S3 Storage — External data (raw/preprocessed), Cache for Adapter, Intermediate Results" value="S3" vertex="1">
           <mxGeometry x="1620" y="640" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_db" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/postgreesql.png;fontSize=10;fontStyle=1;" value="PostgreSQL&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Config / Metadata&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_db" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/postgreesql.png;fontSize=10;fontStyle=1;" tooltip="PostgreSQL — Config / Metadata" value="PostgreSQL" vertex="1">
           <mxGeometry x="1820" y="640" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_task_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/json.png;fontSize=9;" value="Task Config&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;(Flask API Def - Dict)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_task_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/json.png;fontSize=9;" tooltip="Task Config — Flask API Def Dict" value="Task Config" vertex="1">
           <mxGeometry x="1620" y="790" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_sched_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/time-machine.png;fontSize=9;" value="Scheduler Config&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;(Cron defs)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_sched_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/time-machine.png;fontSize=9;" tooltip="Scheduler Config — Cron definitions" value="Sched Config" vertex="1">
           <mxGeometry x="1760" y="790" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_yaml_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/code-file.png;fontSize=9;" value="YAML Route Defs&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;(OnePipeline tracked)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_yaml_cfg" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/code-file.png;fontSize=9;" tooltip="YAML Route Definitions — OnePipeline tracked" value="YAML Routes" vertex="1">
           <mxGeometry x="1900" y="790" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -237,16 +237,16 @@
           <mxGeometry x="2200" y="290" width="600" height="250" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_kafka" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/apache-kafka.png;fontSize=10;fontStyle=1;" value="Kafka Cluster&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Hulk (logs) / Odin (business)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_kafka" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/apache-kafka.png;fontSize=10;fontStyle=1;" tooltip="Kafka Cluster — Hulk (logs) / Odin (business)" value="Kafka" vertex="1">
           <mxGeometry x="2360" y="340" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_schema" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/prototype.png;fontSize=9;" value="Schema Registry&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Avro / RecordNameStrategy&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_schema" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/prototype.png;fontSize=9;" tooltip="Schema Registry — Avro / RecordNameStrategy" value="Schema" vertex="1">
           <mxGeometry x="2240" y="440" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_topics" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/queue.png;fontSize=9;" value="Topics&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;mon_p06147_topic&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_topics" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/queue.png;fontSize=9;" tooltip="Topics — mon_p06147_topic" value="Topics" vertex="1">
           <mxGeometry x="2400" y="440" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_kafkactx" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/python.png;fontSize=9;" value="KafkaContext&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;mapps_model_utils&lt;br&gt;(MAPPS Team provides)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_kafkactx" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/python.png;fontSize=9;" tooltip="KafkaContext — mapps_model_utils (MAPPS Team provides)" value="KafkaContext" vertex="1">
           <mxGeometry x="2560" y="440" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -254,10 +254,10 @@
         <mxCell id="zone_ext_teams" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;opacity=60;" value="&lt;b style=&quot;font-size:13px;color:#4A148C;&quot;&gt;External Teams&lt;/b&gt;" vertex="1">
           <mxGeometry x="2850" y="290" width="220" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="ico_dmd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/organization.png;fontSize=10;fontStyle=1;" value="DMD Team&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Publishes data&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_dmd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/organization.png;fontSize=10;fontStyle=1;" tooltip="DMD Team — Publishes data" value="DMD" vertex="1">
           <mxGeometry x="2910" y="340" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_ipa" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/organization.png;fontSize=10;fontStyle=1;" value="IPA TS&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Publishes data&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_ipa" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/organization.png;fontSize=10;fontStyle=1;" tooltip="IPA TS — Publishes data" value="IPA TS" vertex="1">
           <mxGeometry x="2910" y="440" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -279,16 +279,16 @@
         <mxCell id="zone_external" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;opacity=60;" value="&lt;b style=&quot;font-size:15px;color:#4A148C;&quot;&gt;External Systems &amp; Integration&lt;/b&gt;" vertex="1">
           <mxGeometry x="2200" y="580" width="670" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="ico_trm" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/bank-building.png;fontSize=10;fontStyle=1;" value="TRM&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Trade Risk Mgmt&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_trm" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/bank-building.png;fontSize=10;fontStyle=1;" tooltip="TRM — Trade Risk Management" value="TRM" vertex="1">
           <mxGeometry x="2250" y="630" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_chr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/calculator.png;fontSize=10;fontStyle=1;" value="MAPPS CHR&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Calculation Engine&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_chr" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/calculator.png;fontSize=10;fontStyle=1;" tooltip="MAPPS CHR — Calculation Engine" value="CHR" vertex="1">
           <mxGeometry x="2430" y="630" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_simob" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/stock-share.png;fontSize=10;fontStyle=1;" value="Simob&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Market Data&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_simob" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/stock-share.png;fontSize=10;fontStyle=1;" tooltip="Simob — Market Data" value="Simob" vertex="1">
           <mxGeometry x="2600" y="630" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_ext_src" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/data-transfer.png;fontSize=10;fontStyle=1;" value="External Sources&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;via Adapter&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_ext_src" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/data-transfer.png;fontSize=10;fontStyle=1;" tooltip="External Sources — via Adapter" value="Ext Sources" vertex="1">
           <mxGeometry x="2760" y="630" width="56" height="56" as="geometry" />
         </mxCell>
 
@@ -312,31 +312,31 @@
           <mxGeometry x="60" y="990" width="260" height="130" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_base_img" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/docker.png;fontSize=10;fontStyle=1;" value="MAPPS Base Image&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Platform base container&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_base_img" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/docker.png;fontSize=10;fontStyle=1;" tooltip="MAPPS Base Image — Platform base container" value="Base Image" vertex="1">
           <mxGeometry x="400" y="1010" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_wireup" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/puzzle-matching.png;fontSize=10;fontStyle=1;" value="Wire-up&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Model + Adapter + Ext. Conn.&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_wireup" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/puzzle-matching.png;fontSize=10;fontStyle=1;" tooltip="Wire-up — Model + Adapter + Ext. Conn." value="Wire-up" vertex="1">
           <mxGeometry x="620" y="1010" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_container" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/workstation.png;fontSize=10;fontStyle=1;" value="Application Container&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Final Image (runs in ICHP)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_container" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/workstation.png;fontSize=10;fontStyle=1;" tooltip="Application Container — Final Image (runs in ICHP)" value="Container" vertex="1">
           <mxGeometry x="860" y="1010" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_patch" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/installing-updates.png;fontSize=9;" value="Patch Mgmt&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Security Updates&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_patch" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/installing-updates.png;fontSize=9;" tooltip="Patch Management — Security Updates" value="Patches" vertex="1">
           <mxGeometry x="400" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_change_req" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/change.png;fontSize=9;" value="Change Request&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Managed Process&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_change_req" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/change.png;fontSize=9;" tooltip="Change Request — Managed Process" value="Change Req" vertex="1">
           <mxGeometry x="540" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_sox" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/approve-and-update.png;fontSize=9;" value="SOX Compliance&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Audit Trail&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_sox" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/approve-and-update.png;fontSize=9;" tooltip="SOX Compliance — Audit Trail" value="SOX" vertex="1">
           <mxGeometry x="680" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_infra_upd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/server.png;fontSize=9;" value="Infra Software&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Updates&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_infra_upd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/server.png;fontSize=9;" tooltip="Infra Software Updates" value="Infra" vertex="1">
           <mxGeometry x="820" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_access_ctrl" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/privacy.png;fontSize=9;" value="Access Control&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;(ACE Integration)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_access_ctrl" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/privacy.png;fontSize=9;" tooltip="Access Control — ACE Integration" value="Access Ctrl" vertex="1">
           <mxGeometry x="960" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="ico_platform_mon" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/monitor.png;fontSize=9;" value="Platform Monitoring&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;SLA / Health&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_platform_mon" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/monitor.png;fontSize=9;" tooltip="Platform Monitoring — SLA / Health" value="Monitoring" vertex="1">
           <mxGeometry x="1100" y="1140" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -355,16 +355,16 @@
           <mxGeometry x="40" y="1380" width="1500" height="160" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_openshift" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/openshift.png;fontSize=10;fontStyle=1;" value="OpenShift&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;K8s Cluster Management&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_openshift" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/openshift.png;fontSize=10;fontStyle=1;" tooltip="OpenShift — K8s Cluster Management" value="OpenShift" vertex="1">
           <mxGeometry x="200" y="1420" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_k8s" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/kubernetes.png;fontSize=10;fontStyle=1;" value="Kubernetes&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Container Orchestration&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_k8s" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/kubernetes.png;fontSize=10;fontStyle=1;" tooltip="Kubernetes — Container Orchestration" value="K8s" vertex="1">
           <mxGeometry x="450" y="1420" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_ipc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/cloud-development.png;fontSize=10;fontStyle=1;" value="ING Private Cloud (IPC)&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Hosting Infrastructure&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_ipc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/cloud-development.png;fontSize=10;fontStyle=1;" tooltip="ING Private Cloud (IPC) — Hosting Infrastructure" value="IPC" vertex="1">
           <mxGeometry x="700" y="1420" width="64" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="ico_scaling" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/horizontal-resize.png;fontSize=9;" value="Horizontal Scaling&lt;br&gt;&lt;font style=&quot;font-size:8px;&quot;&gt;Auto-scale Workers&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_scaling" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/horizontal-resize.png;fontSize=9;" tooltip="Horizontal Scaling — Auto-scale Workers" value="Scaling" vertex="1">
           <mxGeometry x="950" y="1425" width="48" height="48" as="geometry" />
         </mxCell>
 
@@ -380,44 +380,44 @@
           <mxGeometry x="1580" y="960" width="1290" height="380" as="geometry" />
         </mxCell>
 
-        <mxCell id="ico_git" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/git.png;fontSize=10;fontStyle=1;" value="Git / PR&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Code Review&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_git" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/git.png;fontSize=10;fontStyle=1;" tooltip="Git / PR — Code Review" value="Git/PR" vertex="1">
           <mxGeometry x="1630" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_azdevops" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-devops.png;fontSize=10;fontStyle=1;" value="OnePipeline&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Azure DevOps CI/CD&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_azdevops" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-devops.png;fontSize=10;fontStyle=1;" tooltip="OnePipeline — Azure DevOps CI/CD" value="OnePipeline" vertex="1">
           <mxGeometry x="1830" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_build" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/rocket.png;fontSize=10;fontStyle=1;" value="Build &amp; Test&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Automated Pipeline&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_build" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/rocket.png;fontSize=10;fontStyle=1;" tooltip="Build & Test — Automated Pipeline" value="Build & Test" vertex="1">
           <mxGeometry x="2030" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_signoff_prod" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/verified-badge.png;fontSize=10;fontStyle=1;" value="Signoff for Prod&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Change Management&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_signoff_prod" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/verified-badge.png;fontSize=10;fontStyle=1;" tooltip="Signoff for Prod — Change Management" value="Signoff" vertex="1">
           <mxGeometry x="2230" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_release" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/box.png;fontSize=10;fontStyle=1;" value="Release&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Deploy to env&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_release" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/box.png;fontSize=10;fontStyle=1;" tooltip="Release — Deploy to environment" value="Release" vertex="1">
           <mxGeometry x="2430" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_azure_art" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-1.png;fontSize=10;fontStyle=1;" value="Azure Artifacts&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Python Packages&lt;br&gt;(FE / BE API / Worker)&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_azure_art" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/96/azure-1.png;fontSize=10;fontStyle=1;" tooltip="Azure Artifacts — Python Packages (FE / BE API / Worker)" value="Artifacts" vertex="1">
           <mxGeometry x="2630" y="1020" width="56" height="56" as="geometry" />
         </mxCell>
 
         <!-- YAML config -->
-        <mxCell id="ico_yaml" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/code-file.png;fontSize=10;fontStyle=1;" value="YAML Config&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;API / Scheduler Routes&lt;br&gt;Per project tracked in repo&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_yaml" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/code-file.png;fontSize=10;fontStyle=1;" tooltip="YAML Config — API / Scheduler Routes, Per project tracked in repo" value="YAML Config" vertex="1">
           <mxGeometry x="1630" y="1160" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_hexagonal" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/hexagon.png;fontSize=10;fontStyle=1;" value="Hexagonal Arch&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Port-Adapter Pattern&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_hexagonal" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/hexagon.png;fontSize=10;fontStyle=1;" tooltip="Hexagonal Architecture — Port-Adapter Pattern" value="Hexagonal" vertex="1">
           <mxGeometry x="1860" y="1160" width="48" height="48" as="geometry" />
         </mxCell>
 
         <!-- Env progression -->
-        <mxCell id="ico_dev" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" value="DEV" vertex="1">
+        <mxCell id="ico_dev" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" tooltip="DEV environment" value="DEV" vertex="1">
           <mxGeometry x="2100" y="1170" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ico_tst" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" value="TST" vertex="1">
+        <mxCell id="ico_tst" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" tooltip="TST environment" value="TST" vertex="1">
           <mxGeometry x="2200" y="1170" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ico_acc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" value="ACC" vertex="1">
+        <mxCell id="ico_acc" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/test-tube.png;fontSize=9;" tooltip="ACC environment" value="ACC" vertex="1">
           <mxGeometry x="2300" y="1170" width="40" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ico_prd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/launched-rocket.png;fontSize=9;" value="PRD" vertex="1">
+        <mxCell id="ico_prd" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/launched-rocket.png;fontSize=9;" tooltip="PRD environment" value="PRD" vertex="1">
           <mxGeometry x="2400" y="1170" width="40" height="40" as="geometry" />
         </mxCell>
 
@@ -454,13 +454,13 @@
         <mxCell id="zone_obs" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;opacity=60;" value="&lt;b style=&quot;font-size:15px;color:#BF360C;&quot;&gt;ING Central — Observability&lt;/b&gt;" vertex="1">
           <mxGeometry x="1580" y="1380" width="560" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="ico_grafana" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/graph-report.png;fontSize=10;fontStyle=1;" value="Monitoring&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Dashboards / Metrics&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_grafana" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/graph-report.png;fontSize=10;fontStyle=1;" tooltip="Monitoring — Dashboards / Metrics" value="Metrics" vertex="1">
           <mxGeometry x="1630" y="1420" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_elk" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/view-details.png;fontSize=10;fontStyle=1;" value="Logging&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;ELK / Splunk&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_elk" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/view-details.png;fontSize=10;fontStyle=1;" tooltip="Logging — ELK / Splunk" value="Logging" vertex="1">
           <mxGeometry x="1830" y="1420" width="56" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="ico_alert" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/alarm.png;fontSize=10;fontStyle=1;" value="Alerting&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Thresholds&lt;/font&gt;" vertex="1">
+        <mxCell id="ico_alert" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=none;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/fluency/96/alarm.png;fontSize=10;fontStyle=1;" tooltip="Alerting — Thresholds" value="Alerting" vertex="1">
           <mxGeometry x="2030" y="1420" width="56" height="56" as="geometry" />
         </mxCell>
 

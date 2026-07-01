@@ -1,281 +1,388 @@
-<mxfile host="Electron" modified="2026-07-01T10:14:00.000Z" agent="draw.io" version="24.0.0">
+<mxfile host="Electron" modified="2026-07-01T11:30:00.000Z" agent="draw.io" version="24.0.0">
   <diagram id="MAPPS_Architecture" name="MAPPS Platform Architecture">
-    <mxGraphModel dx="3200" dy="2200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2000" math="0" shadow="1">
+    <mxGraphModel dx="4000" dy="3000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4200" pageHeight="2800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
-        <!-- ==================== TITLE BAR ==================== -->
-        <mxCell id="title" parent="1" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" value="MAPPS Platform — Low-Level Architecture" vertex="1">
-          <mxGeometry x="900" y="15" width="500" height="40" as="geometry" />
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=24;fontStyle=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;" value="MAPPS Platform — Low-Level Architecture (Hexagonal / Port-Adapter)" vertex="1">
+          <mxGeometry x="1100" y="20" width="700" height="40" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: USERS / FRONTEND ==================== -->
-        <mxCell id="bnd_users" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#1565C0;&quot;&gt;👤 Frontend / UI Layer&lt;/b&gt;" vertex="1" tooltip="User-facing layer. Java-based UI element framework rendered as MAPPS Web Component. Users interact with report viewer, config management, and job monitoring interfaces.">
-          <mxGeometry x="40" y="70" width="520" height="380" as="geometry" />
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend_box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#424242;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=10;spacingTop=5;" value="&lt;b style=&quot;font-size:13px;&quot;&gt;Legend (Team Ownership)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="3400" y="70" width="350" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="fe_icon_java" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://img.icons8.com/color/48/java-coffee-cup-logo.png;" vertex="1">
-          <mxGeometry x="70" y="110" width="36" height="36" as="geometry" />
+        <mxCell id="legend_trm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;fontStyle=1;" value="TRM Engineering" vertex="1">
+          <mxGeometry x="3420" y="105" width="140" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="fe_webcomp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;MAPPS Web Component&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Java UI Framework&lt;/font&gt;" vertex="1" tooltip="UI element from Java framework. Rendered as MAPPS web component for report visualization and management.">
-          <mxGeometry x="120" y="110" width="200" height="50" as="geometry" />
+        <mxCell id="legend_mapps" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=10;fontStyle=1;" value="MAPPS Team (Platform)" vertex="1">
+          <mxGeometry x="3420" y="140" width="160" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="fe_report" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=11;shadow=1;" value="📊 Report Viewer" vertex="1" tooltip="Displays computed report results (CapFloor, Bermudan, Swaption) to end users with filtering and export capabilities.">
-          <mxGeometry x="60" y="190" width="140" height="40" as="geometry" />
+        <mxCell id="legend_central" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=10;fontStyle=1;" value="ING Central / Infra" vertex="1">
+          <mxGeometry x="3420" y="175" width="150" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="fe_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=11;shadow=1;" value="⚙️ Config Manager" vertex="1" tooltip="UI for managing SysConfig, scheduler settings, adapter configurations, and environment-specific parameters.">
-          <mxGeometry x="220" y="190" width="140" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="fe_jobmon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=11;shadow=1;" value="📋 Job Monitor" vertex="1" tooltip="Real-time monitoring of Celery task queue status, worker health, and job progress. Shows running/pending/failed jobs.">
-          <mxGeometry x="380" y="190" width="140" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="fe_user_req" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=11;shadow=1;" value="📝 User Request &amp;&lt;br&gt;Deployment Signoff" vertex="1" tooltip="Handles user-initiated report requests, deployment approvals, and production sign-off workflows.">
-          <mxGeometry x="60" y="260" width="180" height="45" as="geometry" />
+        <mxCell id="legend_external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=10;fontStyle=1;" value="External Teams (DMD, IPA TS)" vertex="1">
+          <mxGeometry x="3600" y="105" width="130" height="28" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: BACKEND / API GATEWAY ==================== -->
-        <mxCell id="bnd_backend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#2E7D32;&quot;&gt;🌐 Backend / API Layer&lt;/b&gt;" vertex="1" tooltip="Flask API behind WSGI (NGINX). Exposes MAPPS functionality via REST API. Handles routing, authentication, and request processing. Data Controller Interface exposes MAPPS to TRM.">
-          <mxGeometry x="600" y="70" width="620" height="380" as="geometry" />
+        <!-- ==================== ACE / ACCESS CONTROL LAYER ==================== -->
+        <mxCell id="bnd_ace" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;ACE — Access Control &amp; Authentication&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="70" width="1200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="be_nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🔒 NGINX&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;WSGI / Reverse Proxy&lt;/font&gt;" vertex="1" tooltip="NGINX as WSGI gateway. Handles SSL termination, load balancing, rate limiting, and proxies requests to Flask app.">
-          <mxGeometry x="630" y="120" width="180" height="50" as="geometry" />
+
+        <!-- Business Users -->
+        <mxCell id="ace_users" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=12;fontStyle=1;" value="&lt;b&gt;👤 Business Users&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;TRM Analysts / Quants&lt;/font&gt;" vertex="1" tooltip="Business users from TRM who login via ING SSO and access the platform based on Access Matrix roles.">
+          <mxGeometry x="70" y="120" width="180" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="be_flask" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🐍 Flask API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;REST Endpoints / Routes&lt;/font&gt;" vertex="1" tooltip="Core Flask application. Defines REST API routes for report submission, job status, config CRUD. Serves as the API definition layer with OpenAPI/Swagger docs.">
-          <mxGeometry x="630" y="200" width="180" height="50" as="geometry" />
+
+        <!-- SSO / Login -->
+        <mxCell id="ace_sso" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;🔐 ING SSO&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;SAML / OAuth2&lt;/font&gt;" vertex="1" tooltip="ING Central SSO authentication. Users authenticate via SAML/OAuth2 before accessing any MAPPS resources.">
+          <mxGeometry x="310" y="120" width="150" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="be_flask_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=10;shadow=1;" value="🔧 Flask Config&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;API Definition&lt;/font&gt;" vertex="1" tooltip="Flask configuration and API contract definitions. Environment-specific settings (dev/tst/acc/prd), feature flags, database URIs.">
-          <mxGeometry x="630" y="275" width="130" height="40" as="geometry" />
+
+        <!-- Access Matrix -->
+        <mxCell id="ace_matrix" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;📋 Access Matrix&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Role-Based Access Control&lt;/font&gt;" vertex="1" tooltip="Access Matrix defines which users/roles can access which resources. Managed centrally by ING. Controls read/write/execute permissions per application and environment.">
+          <mxGeometry x="520" y="120" width="180" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="be_data_ctrl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#1B5E20;fontSize=12;fontStyle=1;shadow=1;strokeWidth=2;" value="&lt;b&gt;🔗 Data Controller Interface&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;MAPPS exposed to TRM&lt;/font&gt;" vertex="1" tooltip="Data Controller Interface: The API surface MAPPS exposes to TRM. TRM has more visibility into MAPPS through this interface. Handles structured data exchange, validation, and transformation.">
-          <mxGeometry x="870" y="120" width="220" height="55" as="geometry" />
+
+        <!-- Access Control Engine -->
+        <mxCell id="ace_engine" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;⚙️ ACE Engine&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Policy Enforcement&lt;/font&gt;" vertex="1" tooltip="Access Control Engine enforces policies defined in the Access Matrix. Validates user tokens and permissions before allowing access to APIs and UI.">
+          <mxGeometry x="760" y="120" width="160" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="be_auth" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;shadow=1;" value="🔑 Auth Module&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;External Data Source Auth&lt;/font&gt;" vertex="1" tooltip="Section 3a: Authentication module for external data source connections. Manages credentials, tokens, and access to third-party systems.">
-          <mxGeometry x="870" y="200" width="180" height="45" as="geometry" />
+
+        <!-- Authorized Session -->
+        <mxCell id="ace_session" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=10;" value="✅ Authorized Session&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Token / Context&lt;/font&gt;" vertex="1" tooltip="After successful auth and access control, an authorized session token is created allowing the user to interact with the platform.">
+          <mxGeometry x="990" y="130" width="150" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="be_internal" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=11;shadow=1;" value="🔄 Internal System Comm&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Inter-service messaging&lt;/font&gt;" vertex="1" tooltip="Section 3b: Internal system communication layer. Handles inter-service communication within MAPPS platform components using internal protocols.">
-          <mxGeometry x="870" y="265" width="180" height="45" as="geometry" />
+
+        <!-- ACE Flow connections -->
+        <mxCell id="conn_user_sso" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="ace_users" target="ace_sso" value="&lt;font style=&quot;font-size:9px;&quot;&gt;login&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_sso_matrix" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="ace_sso" target="ace_matrix" value="&lt;font style=&quot;font-size:9px;&quot;&gt;validate&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_matrix_engine" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="ace_matrix" target="ace_engine" value="&lt;font style=&quot;font-size:9px;&quot;&gt;enforce&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_engine_session" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="ace_engine" target="ace_session" value="&lt;font style=&quot;font-size:9px;&quot;&gt;grant&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== FRONTEND / UI LAYER (TRM Engineering) ==================== -->
+        <mxCell id="bnd_frontend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Frontend Layer (Azure Artifact — Python Package)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="300" width="600" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fe_webcomp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;MAPPS Web Component&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Java UI Framework&lt;/font&gt;" vertex="1" tooltip="UI rendered as MAPPS web component. Packaged as Azure artifact.">
+          <mxGeometry x="70" y="350" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_report" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=11;" value="📊 Report Viewer" vertex="1">
+          <mxGeometry x="70" y="420" width="130" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=11;" value="⚙️ Config Manager" vertex="1">
+          <mxGeometry x="220" y="420" width="130" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_jobmon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=11;" value="📋 Job Monitor" vertex="1">
+          <mxGeometry x="370" y="420" width="130" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_s3mgr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="☁️ S3 Manager" vertex="1" tooltip="src/s3_manager.js - Web component for S3 file operations">
+          <mxGeometry x="70" y="475" width="110" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_gmdb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="🗄️ GMDB Manager" vertex="1" tooltip="src/gmdb_manager.js - common-etl-gmdb-test-view web component">
+          <mxGeometry x="200" y="475" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_kafka_mgr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="📡 Kafka Manager" vertex="1" tooltip="src/kafka_manager.js - kafka-manager-common-etl-view web component">
+          <mxGeometry x="340" y="475" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_signoff" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="📝 Deployment Signoff" vertex="1">
+          <mxGeometry x="480" y="475" width="140" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== BACKEND API LAYER (TRM Engineering) ==================== -->
+        <mxCell id="bnd_backend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Backend API Layer (Azure Artifact — Python Package)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="680" y="300" width="680" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="be_nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;🔒 NGINX&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;WSGI / Reverse Proxy&lt;/font&gt;" vertex="1">
+          <mxGeometry x="710" y="350" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="be_flask" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;🐍 Flask API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;REST Endpoints (Port)&lt;/font&gt;" vertex="1" tooltip="Flask REST API - the Port in hexagonal architecture. Routes defined in YAML config tracked in OnePipeline (Azure DevOps).">
+          <mxGeometry x="710" y="420" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="be_flask_def" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="🔧 Flask API Definition&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Python Dict (task config)&lt;/font&gt;" vertex="1" tooltip="API definition inside Python methods as dictionary. Contains task configuration read by Celery/Redis from Persistence Storage.">
+          <mxGeometry x="710" y="490" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="be_data_ctrl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;🔗 Data Controller Interface&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;MAPPS exposes to TRM (Adapter connects here)&lt;/font&gt;" vertex="1" tooltip="Data Controller Interface provided by MAPPS platform. Adapter uses this interface to connect to external systems. TRM has visibility into MAPPS through this.">
+          <mxGeometry x="940" y="350" width="280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="be_auth" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=11;" value="🔑 Auth Module&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;External Data Source Auth&lt;/font&gt;" vertex="1">
+          <mxGeometry x="940" y="425" width="170" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="be_internal" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=11;" value="🔄 Internal Comm&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Inter-service messaging&lt;/font&gt;" vertex="1">
+          <mxGeometry x="940" y="485" width="170" height="42" as="geometry" />
         </mxCell>
 
         <!-- Connection: FE → NGINX -->
-        <mxCell id="conn_fe_nginx" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#1565C0;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="fe_webcomp" target="be_nginx" value="&lt;font style=&quot;font-size:10px;&quot;&gt;HTTPS&lt;/font&gt;">
+        <mxCell id="conn_fe_nginx" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="fe_webcomp" target="be_nginx" value="&lt;font style=&quot;font-size:9px;&quot;&gt;HTTPS&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <!-- Connection: NGINX → Flask -->
-        <mxCell id="conn_nginx_flask" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;" edge="1" source="be_nginx" target="be_flask" value="&lt;font style=&quot;font-size:9px;&quot;&gt;proxy&lt;/font&gt;">
+        <mxCell id="conn_nginx_flask" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="be_nginx" target="be_flask" value="&lt;font style=&quot;font-size:9px;&quot;&gt;proxy&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- ACE → Frontend -->
+        <mxCell id="conn_ace_fe" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#616161;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="ace_session" target="bnd_frontend" value="&lt;font style=&quot;font-size:9px;&quot;&gt;authorized access&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: PROCESSING / ASYNC EXECUTION ==================== -->
-        <mxCell id="bnd_processing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#F57F17;&quot;&gt;⚡ Async Processing Layer (Celery)&lt;/b&gt;" vertex="1" tooltip="Asynchronous execution engine. Scheduler reads SysConfig, dispatches tasks to Redis-backed Celery queue. Workers consume tasks, execute domain kernel logic. Horizontal scaling via container orchestration.">
-          <mxGeometry x="40" y="490" width="870" height="370" as="geometry" />
+        <!-- ==================== ASYNC PROCESSING LAYER - CELERY (TRM Engineering) ==================== -->
+        <mxCell id="bnd_processing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Async Processing Layer — Celery (Azure Artifact — Backend Worker/Task Package)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="620" width="1050" height="380" as="geometry" />
         </mxCell>
-        <mxCell id="proc_sysconfig" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;fontStyle=1;shadow=1;" value="📄 SysConfig&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Schedule Configuration&lt;/font&gt;" vertex="1" tooltip="System configuration that drives the scheduler. Contains cron expressions, job definitions, execution parameters, and report type configurations per environment.">
-          <mxGeometry x="70" y="550" width="150" height="50" as="geometry" />
+
+        <mxCell id="proc_scheduler" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;⏰ Scheduler&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Reads config from Persistence&lt;/font&gt;" vertex="1" tooltip="Job scheduler. Reads schedule config from Persistence Storage. Cron definitions in YAML tracked in OnePipeline.">
+          <mxGeometry x="70" y="690" width="200" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="proc_scheduler" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE082;strokeColor=#F57F17;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;⏰ Scheduler&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Reads SysConfig&lt;/font&gt;" vertex="1" tooltip="Job scheduler component. Reads schedule configurations from SysConfig and dispatches tasks to the Celery task queue. Supports cron-like scheduling for automated report generation.">
-          <mxGeometry x="70" y="640" width="150" height="50" as="geometry" />
+        <mxCell id="proc_taskqueue" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;📨 Task Queue&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Redis / Celery Broker&lt;/font&gt;" vertex="1" tooltip="Redis-backed Celery task queue. Reads task config (Flask API Definition dict) from Persistence Storage.">
+          <mxGeometry x="340" y="690" width="180" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="proc_taskqueue" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#E65100;fontSize=12;fontStyle=1;shadow=1;strokeWidth=2;" value="&lt;b&gt;📨 Task Queue&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Redis / Celery Broker&lt;/font&gt;" vertex="1" tooltip="Message broker-backed task queue (Celery with Redis). Holds pending tasks dispatched by scheduler or API. Supports async execution, retry logic, priority queuing, and dead-letter handling.">
-          <mxGeometry x="290" y="590" width="180" height="55" as="geometry" />
+        <mxCell id="proc_workers" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;🏗️ Celery Workers&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Async Execution&lt;/font&gt;" vertex="1">
+          <mxGeometry x="600" y="690" width="170" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="proc_workers" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE082;strokeColor=#F57F17;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🏗️ Celery Workers&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Async Execution&lt;/font&gt;" vertex="1" tooltip="Celery worker processes consuming tasks from the queue. Execute domain logic asynchronously. Horizontally scalable via Kubernetes. Each worker runs Models/Kernel computation.">
-          <mxGeometry x="540" y="590" width="170" height="55" as="geometry" />
+
+        <!-- Model/Kernel implemented by Adapter -->
+        <mxCell id="proc_model_kernel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;🧠 Model / Kernel&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Domain Logic (Python)&lt;/font&gt;" vertex="1" tooltip="Core domain/business logic - Model and computation Kernel. Implemented BY the Adapter which connects to external systems via Data Controller Interface.">
+          <mxGeometry x="200" y="790" width="200" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="proc_kernel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=12;fontStyle=1;shadow=1;strokeWidth=2;" value="&lt;b&gt;🧠 Models / Kernel&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Domain Code (Python)&lt;/font&gt;" vertex="1" tooltip="Core domain logic. Contains business models and computation kernel. Implements pricing/valuation logic for CapFloor, Bermudan, Swaption reports. Contains logic that implements SysConfig-driven behavior.">
-          <mxGeometry x="340" y="700" width="200" height="55" as="geometry" />
+
+        <mxCell id="proc_adapter" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;🔌 Adapter&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Implements Model/Kernel&lt;br&gt;Connects External via Data Controller&lt;/font&gt;" vertex="1" tooltip="Adapter implements Model/Kernel. Acts as the medium to connect external systems via Data Controller Interface provided by MAPPS platform. Follows hexagonal/port-adapter architecture.">
+          <mxGeometry x="500" y="780" width="280" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="proc_adapter" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=11;shadow=1;" value="🔌 Adapter Kernel&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Config-Driven Transforms&lt;/font&gt;" vertex="1" tooltip="Adapter kernel transforming data between external format and internal model format. Configuration-driven: adapters selected based on report type and source system. Config → Adapter Kernel pattern.">
-          <mxGeometry x="610" y="700" width="170" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="proc_contains" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#F57F17;fontSize=9;dashed=1;strokeWidth=1;" value="contains logic / implements SysConfig" vertex="1" tooltip="The domain logic implementation layer that reads SysConfig and executes accordingly.">
-          <mxGeometry x="70" y="720" width="200" height="30" as="geometry" />
+
+        <mxCell id="proc_report" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;📊 Report Generation&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Output of Process Run&lt;/font&gt;" vertex="1" tooltip="Report generated as output of the adapter process run. Stored in S3/DB and published to Kafka.">
+          <mxGeometry x="850" y="790" width="200" height="55" as="geometry" />
         </mxCell>
 
         <!-- Processing connections -->
-        <mxCell id="conn_sys_sched" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#F57F17;strokeWidth=2;" edge="1" source="proc_sysconfig" target="proc_scheduler" value="&lt;font style=&quot;font-size:9px;&quot;&gt;reads&lt;/font&gt;">
+        <mxCell id="conn_sched_queue" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_scheduler" target="proc_taskqueue" value="&lt;font style=&quot;font-size:9px;&quot;&gt;dispatch&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_sched_queue" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="proc_scheduler" target="proc_taskqueue" value="&lt;font style=&quot;font-size:9px;&quot;&gt;dispatch&lt;/font&gt;">
+        <mxCell id="conn_queue_workers" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_taskqueue" target="proc_workers" value="&lt;font style=&quot;font-size:9px;&quot;&gt;consume&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_queue_workers" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="proc_taskqueue" target="proc_workers" value="&lt;font style=&quot;font-size:9px;&quot;&gt;consume&lt;/font&gt;">
+        <mxCell id="conn_workers_model" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_workers" target="proc_model_kernel" value="&lt;font style=&quot;font-size:9px;&quot;&gt;execute&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_workers_kernel" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#F57F17;strokeWidth=2;" edge="1" source="proc_workers" target="proc_kernel" value="&lt;font style=&quot;font-size:9px;&quot;&gt;execute&lt;/font&gt;">
+        <mxCell id="conn_model_adapter" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_model_kernel" target="proc_adapter" value="&lt;font style=&quot;font-size:9px;&quot;&gt;implemented by&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_workers_adapter" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#F57F17;strokeWidth=1;dashed=1;" edge="1" source="proc_workers" target="proc_adapter">
+        <mxCell id="conn_adapter_report" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_adapter" target="proc_report" value="&lt;font style=&quot;font-size:9px;&quot;&gt;generates&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <!-- Flask → Task Queue -->
-        <mxCell id="conn_flask_queue" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#2E7D32;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="be_flask" target="proc_taskqueue" value="&lt;font style=&quot;font-size:9px;&quot;&gt;submit task&lt;/font&gt;">
+        <mxCell id="conn_flask_queue" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="be_flask" target="proc_taskqueue" value="&lt;font style=&quot;font-size:9px;&quot;&gt;submit task&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Adapter → Data Controller Interface -->
+        <mxCell id="conn_adapter_dc" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#388E3C;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="proc_adapter" target="be_data_ctrl" value="&lt;font style=&quot;font-size:9px;&quot;&gt;connects via&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: EXTERNAL SYSTEMS ==================== -->
-        <mxCell id="bnd_external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#6A1B9A;&quot;&gt;🏢 External Systems &amp; Integration&lt;/b&gt;" vertex="1" tooltip="External data sources and integration layer. Includes TRM (Trade Risk Management), MAPPS CHR (Calculation), Simob (Market Data), and Market Systems service layer. Section 3a: External data source connections (Auth). Section 3b: Internal system communication.">
-          <mxGeometry x="1260" y="70" width="530" height="380" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_trm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🏦 TRM&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Trade Risk Management&lt;/font&gt;" vertex="1" tooltip="TRM (Trade Risk Management) system. Primary consumer of MAPPS data. Has more visibility into MAPPS via Data Controller Interface. Sends calculation requests and receives report results.">
-          <mxGeometry x="1290" y="130" width="200" height="55" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_chr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🧮 MAPPS CHR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Calculation Engine&lt;/font&gt;" vertex="1" tooltip="MAPPS CHR calculation engine. Provides core pricing calculation capabilities. Connected via Service layer to Simob market data.">
-          <mxGeometry x="1540" y="130" width="200" height="55" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_market" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=11;shadow=1;" value="📡 Market Systems&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Service Layer&lt;/font&gt;" vertex="1" tooltip="Market systems service layer that connects to Simob. Provides abstraction over market data access and routing.">
-          <mxGeometry x="1290" y="220" width="160" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_simob" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=11;shadow=1;" value="📈 Simob&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Market Data Feed&lt;/font&gt;" vertex="1" tooltip="Simob market data system. Provides real-time and historical market data feeds (rates, curves, volatilities) used in pricing calculations.">
-          <mxGeometry x="1500" y="220" width="140" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_adapters" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=11;shadow=1;" value="🔌 External Adapters&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Data Source Connectors&lt;/font&gt;" vertex="1" tooltip="External adapters connecting MAPPS to third-party data sources. Each adapter handles authentication, data format conversion, error handling for its external system.">
-          <mxGeometry x="1290" y="300" width="170" height="45" as="geometry" />
-        </mxCell>
-        <mxCell id="ext_service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=11;shadow=1;" value="⚙️ Service Layer&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;CHR ↔ Simob&lt;/font&gt;" vertex="1" tooltip="Service orchestration layer between MAPPS CHR and external market systems. Handles service discovery, routing, and protocol translation.">
-          <mxGeometry x="1540" y="300" width="150" height="45" as="geometry" />
+        <!-- ==================== PERSISTENCE STORAGE ==================== -->
+        <mxCell id="bnd_storage" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Persistence Storage&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1140" y="620" width="560" height="380" as="geometry" />
         </mxCell>
 
-        <!-- External connections -->
-        <mxCell id="conn_trm_dc" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" source="ext_trm" target="be_data_ctrl" value="&lt;font style=&quot;font-size:9px;&quot;&gt;API↔&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_mkt_simob" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=1;" edge="1" source="ext_market" target="ext_simob" value="&lt;font style=&quot;font-size:9px;&quot;&gt;data&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_chr_svc" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=1;" edge="1" source="ext_chr" target="ext_service">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_adapter_ext" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=1;dashed=1;" edge="1" source="ext_adapters" target="proc_adapter" value="&lt;font style=&quot;font-size:9px;&quot;&gt;data feed&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="stor_s3" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;☁️ S3 Storage&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;External Source Data (raw/preprocessed)&lt;br&gt;Cache for Adapter during process run&lt;br&gt;Intermediate Results&lt;/font&gt;" vertex="1" tooltip="S3 stores external source data fetched by scheduler (raw or preprocessed). Acts as cache for adapter during process run. Also stores intermediate results.">
+          <mxGeometry x="1170" y="690" width="240" height="90" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: PERSISTENCE / STORAGE ==================== -->
-        <mxCell id="bnd_storage" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#C62828;&quot;&gt;💾 Persistence Storage&lt;/b&gt;" vertex="1" tooltip="Section 4: Persistence layer. Shared S3 buckets and databases. Stores: (a) preprocessed data (individual), (b) config data, (c) intermediate data including results. Shared across all services.">
-          <mxGeometry x="960" y="490" width="530" height="370" as="geometry" />
+        <mxCell id="stor_db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;🗄️ Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;PostgreSQL&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1440" y="690" width="150" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="stor_s3" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;☁️ Shared S3&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Object Storage&lt;/font&gt;" vertex="1" tooltip="AWS S3 shared bucket storage for large datasets, preprocessed files, computation results, and archived reports. Accessible by all workers and services.">
-          <mxGeometry x="1000" y="560" width="150" height="70" as="geometry" />
+
+        <mxCell id="stor_task_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="Task Config&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(Flask API Def - Python Dict)&lt;/font&gt;" vertex="1" tooltip="Task configuration defined inside Flask API Python methods as dictionary. Read by Celery/Redis.">
+          <mxGeometry x="1170" y="810" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="stor_db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=12;fontStyle=1;shadow=1;" value="&lt;b&gt;🗄️ Database&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;PostgreSQL / NoSQL&lt;/font&gt;" vertex="1" tooltip="Relational database (PostgreSQL) for structured data. Stores config data, job metadata, user settings, and processed report results. May also include NoSQL for document storage.">
-          <mxGeometry x="1200" y="560" width="160" height="70" as="geometry" />
+        <mxCell id="stor_sched_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="Scheduler Config&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(Cron definitions)&lt;/font&gt;" vertex="1" tooltip="Scheduler configuration - cron parameters, time zones, concurrency settings.">
+          <mxGeometry x="1350" y="810" width="140" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="stor_preproc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;shadow=1;" value="4a. Preprocessed Data&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(Individual reports)&lt;/font&gt;" vertex="1" tooltip="Store preprocessed data per individual report/job. Raw data transformed into computation-ready format before kernel execution.">
-          <mxGeometry x="990" y="670" width="145" height="40" as="geometry" />
+        <mxCell id="stor_yaml_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="API/Scheduler Route Defs&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(YAML in OnePipeline)&lt;/font&gt;" vertex="1" tooltip="Route and definitions of API or Scheduler mentioned in Code of each Project in YAML file tracked in OnePipeline (Azure DevOps).">
+          <mxGeometry x="1510" y="810" width="170" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="stor_config" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;shadow=1;" value="4b. Config Data" vertex="1" tooltip="Configuration data persistence. Stores SysConfig, adapter configurations, scheduler settings, and environment-specific parameters.">
-          <mxGeometry x="1155" y="670" width="110" height="40" as="geometry" />
+        <mxCell id="stor_ext_data" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="External Source Data&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(via Scheduler - raw/preprocessed)&lt;/font&gt;" vertex="1" tooltip="External source data fetched by scheduler, stored in S3 either raw or after preprocessing. Used by adapter as cache during process run.">
+          <mxGeometry x="1170" y="870" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="stor_results" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=10;shadow=1;" value="4c. Intermediate Data&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(Including Results)&lt;/font&gt;" vertex="1" tooltip="Intermediate computation data and final results storage. Workers write intermediate state during long-running jobs. Final report results persisted here for retrieval by API/UI.">
-          <mxGeometry x="1285" y="670" width="150" height="40" as="geometry" />
+        <mxCell id="stor_intermediate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;" value="Intermediate Results&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;(Stored in S3)&lt;/font&gt;" vertex="1" tooltip="Intermediate computation results stored in S3 during process run.">
+          <mxGeometry x="1400" y="870" width="160" height="40" as="geometry" />
         </mxCell>
 
         <!-- Storage connections -->
-        <mxCell id="conn_workers_s3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#C62828;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="proc_workers" target="stor_s3" value="&lt;font style=&quot;font-size:9px;&quot;&gt;read/write&lt;/font&gt;">
+        <mxCell id="conn_adapter_s3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_adapter" target="stor_s3" value="&lt;font style=&quot;font-size:9px;&quot;&gt;read (cache)&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_kernel_db" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#C62828;strokeWidth=1;dashed=1;" edge="1" source="proc_kernel" target="stor_db" value="&lt;font style=&quot;font-size:9px;&quot;&gt;persist&lt;/font&gt;">
+        <mxCell id="conn_report_s3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=1;dashed=1;" edge="1" source="proc_report" target="stor_s3" value="&lt;font style=&quot;font-size:9px;&quot;&gt;store results&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_sched_s3" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=1;dashed=1;" edge="1" source="proc_scheduler" target="stor_s3" value="&lt;font style=&quot;font-size:9px;&quot;&gt;fetch external data&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_celery_config" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="proc_taskqueue" target="stor_task_config" value="&lt;font style=&quot;font-size:9px;&quot;&gt;read config&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: KAFKA MESSAGING ==================== -->
-        <mxCell id="bnd_kafka" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#E65100;&quot;&gt;📬 Messaging Layer (Kafka)&lt;/b&gt;" vertex="1" tooltip="Kafka messaging infrastructure. Schema Registry for Avro schema management. Supports RecordNameStrategy for multiple schemas per topic. KafkaContext wrapper from mapps_model_utils provides platform-standard access.">
-          <mxGeometry x="1540" y="490" width="500" height="370" as="geometry" />
+        <!-- ==================== KAFKA MESSAGING LAYER ==================== -->
+        <mxCell id="bnd_kafka" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Messaging Layer (Kafka)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1750" y="300" width="550" height="280" as="geometry" />
         </mxCell>
-        <mxCell id="msg_kafka" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=12;fontStyle=1;shadow=1;strokeWidth=2;" value="&lt;b&gt;📡 Kafka Cluster&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Hulk (logs) / Odin (business)&lt;/font&gt;" vertex="1" tooltip="Kafka cluster infrastructure. 'hulk' cluster for log topics, 'odin' cluster for business event topics. Managed by platform team. Provides high-throughput, distributed event streaming.">
-          <mxGeometry x="1640" y="550" width="230" height="55" as="geometry" />
+
+        <mxCell id="msg_kafka" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;📡 Kafka Cluster&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Hulk (logs) / Odin (business)&lt;/font&gt;" vertex="1" tooltip="Kafka cluster managed by ING Central. Hulk for log topics, Odin for business event topics.">
+          <mxGeometry x="1870" y="350" width="220" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="msg_topics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=11;shadow=1;" value="📋 Topics&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;mon_p06147_topic&lt;/font&gt;" vertex="1" tooltip="Kafka topics for report event publishing. Example: mon_p06147_topic. Multiple report types (CapFloor, Bermudan, Swaption) can share a topic using RecordNameStrategy or Envelope schema.">
-          <mxGeometry x="1570" y="640" width="140" height="45" as="geometry" />
+        <mxCell id="msg_schema" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;" value="📐 Schema Registry&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Avro (RecordNameStrategy)&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1780" y="430" width="170" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="msg_schema" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=11;shadow=1;" value="📐 Schema Registry&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Avro Schemas&lt;/font&gt;" vertex="1" tooltip="Confluent Schema Registry storing Avro schemas. Schema IDs embedded in Confluent wire format. Supports RecordNameStrategy for multiple schemas per topic. Provides schema evolution and compatibility checks.">
-          <mxGeometry x="1740" y="640" width="150" height="45" as="geometry" />
+        <mxCell id="msg_topics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;" value="📋 Topics&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;mon_p06147_topic&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1980" y="430" width="140" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="msg_kafkactx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=11;shadow=1;dashed=1;" value="🐍 KafkaContext&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;mapps_model_utils wrapper&lt;/font&gt;" vertex="1" tooltip="Platform-provided KafkaContext wrapper (from mapps_model_utils). Simplified Kafka producer/consumer with static AvroMapping per env. Usage: KafkaContext(topic, cluster_name, avro_schema_id=AvroMapping(dev=..., prd=...))">
-          <mxGeometry x="1570" y="720" width="160" height="45" as="geometry" />
+        <mxCell id="msg_kafkactx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=11;" value="🐍 KafkaContext&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;mapps_model_utils wrapper&lt;/font&gt;" vertex="1" tooltip="Platform-provided KafkaContext from mapps_model_utils. MAPPS team provides this wrapper.">
+          <mxGeometry x="1780" y="500" width="170" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="msg_subscriptions" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;fontSize=11;shadow=1;" value="🔔 Subscriptions&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Event Hubs / CReSub&lt;/font&gt;" vertex="1" tooltip="Topic and schema subscriptions. Event Hubs integration and CReSub (Create/Subscribe) patterns for consumer group management and event routing.">
-          <mxGeometry x="1770" y="720" width="150" height="45" as="geometry" />
+
+        <!-- External teams publishing to Kafka -->
+        <mxCell id="msg_dmd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=11;fontStyle=1;" value="&lt;b&gt;DMD Team&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Publishes data&lt;/font&gt;" vertex="1" tooltip="DMD team publishes data to Kafka topics that adapters consume.">
+          <mxGeometry x="2140" y="350" width="130" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="msg_ipa" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=11;fontStyle=1;" value="&lt;b&gt;IPA TS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Publishes data&lt;/font&gt;" vertex="1" tooltip="IPA TS team publishes data to Kafka topics that adapters consume.">
+          <mxGeometry x="2140" y="410" width="130" height="45" as="geometry" />
         </mxCell>
 
         <!-- Kafka connections -->
-        <mxCell id="conn_topic_kafka" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=1;" edge="1" source="msg_topics" target="msg_kafka">
+        <mxCell id="conn_dmd_kafka" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=2;" edge="1" source="msg_dmd" target="msg_kafka" value="&lt;font style=&quot;font-size:9px;&quot;&gt;publish&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_schema_kafka" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=1;" edge="1" source="msg_schema" target="msg_kafka">
+        <mxCell id="conn_ipa_kafka" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#6A1B9A;strokeWidth=2;" edge="1" source="msg_ipa" target="msg_kafka" value="&lt;font style=&quot;font-size:9px;&quot;&gt;publish&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_workers_kafka" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" source="proc_kernel" target="msg_kafka" value="&lt;font style=&quot;font-size:9px;&quot;&gt;publish results&lt;/font&gt;">
+        <!-- Adapter consumes from Kafka -->
+        <mxCell id="conn_adapter_kafka_consume" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;" edge="1" source="proc_adapter" target="msg_kafka" value="&lt;font style=&quot;font-size:9px;&quot;&gt;consume data&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- ==================== BOUNDARY: DEPLOYMENT / CI-CD ==================== -->
-        <mxCell id="bnd_deploy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#37474F;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#37474F;&quot;&gt;🚀 Deployment &amp; Release (CI/CD)&lt;/b&gt;" vertex="1" tooltip="Section 5 &amp; 6: Deployment infrastructure. Extends existing platform infra. Includes: PR workflow, Signoff for Prod release, Change Management, Release processes, ICHP (infrastructure changes). Containerized via Docker/Kubernetes.">
-          <mxGeometry x="40" y="900" width="870" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_pr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#37474F;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;🔀 PR / Code Review&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Git Workflow&lt;/font&gt;" vertex="1" tooltip="Pull Request and code review workflow. All code changes require PR approval before merge. Automated checks run on PR.">
-          <mxGeometry x="70" y="960" width="150" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_signoff" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#37474F;fontSize=11;shadow=1;" value="✅ Signoff for Prod&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Change Management&lt;/font&gt;" vertex="1" tooltip="Production sign-off and change management process. All production releases require approval and sign-off before deployment.">
-          <mxGeometry x="260" y="960" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_release" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#37474F;fontSize=11;shadow=1;" value="📦 Release Process&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;CI/CD Pipeline&lt;/font&gt;" vertex="1" tooltip="Release process with CI/CD pipeline. Automated build → test → deploy. Environments: dev → tst → acc → prd.">
-          <mxGeometry x="460" y="960" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_ichp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#37474F;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;🏗️ ICHP&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Infrastructure Changes&lt;/font&gt;" vertex="1" tooltip="ICHP (Infrastructure Change Process). Manages infra changes, container deployments, platform config updates. All production infra changes flow through ICHP.">
-          <mxGeometry x="660" y="960" width="150" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_containers" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0BEC5;strokeColor=#37474F;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;🐳 Containers&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Docker / Kubernetes&lt;/font&gt;" vertex="1" tooltip="Containerized deployment using Docker and Kubernetes. All MAPPS services (Flask API, Celery workers, Scheduler, NGINX) run as containers. Supports horizontal scaling and orchestration.">
-          <mxGeometry x="260" y="1050" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="dep_existing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#37474F;fontSize=10;shadow=1;dashed=1;" value="Existing Infra (Platform)" vertex="1" tooltip="Existing shared infrastructure provided by platform team. MAPPS deployment extends this infra. External deployments are also part of this shared platform.">
-          <mxGeometry x="500" y="1055" width="160" height="40" as="geometry" />
-        </mxCell>
-
-        <!-- Deploy connections -->
-        <mxCell id="conn_pr_sign" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#37474F;strokeWidth=1;" edge="1" source="dep_pr" target="dep_signoff" value="&lt;font style=&quot;font-size:8px;&quot;&gt;approve&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_sign_rel" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#37474F;strokeWidth=1;" edge="1" source="dep_signoff" target="dep_release" value="&lt;font style=&quot;font-size:8px;&quot;&gt;release&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_rel_ichp" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#37474F;strokeWidth=1;" edge="1" source="dep_release" target="dep_ichp" value="&lt;font style=&quot;font-size:8px;&quot;&gt;deploy&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_ichp_cont" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#37474F;strokeWidth=1;" edge="1" source="dep_ichp" target="dep_containers">
+        <!-- Adapter publishes to Kafka -->
+        <mxCell id="conn_adapter_kafka_publish" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=2;dashed=1;" edge="1" source="proc_report" target="msg_kafka" value="&lt;font style=&quot;font-size:9px;&quot;&gt;publish results&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== BOUNDARY: OBSERVABILITY ==================== -->
-        <mxCell id="bnd_observability" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;strokeColor=#00695C;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;shadow=1;arcSize=8;" value="&lt;b style=&quot;font-size:15px;color:#00695C;&quot;&gt;👁️ Observability / Alerts&lt;/b&gt;" vertex="1" tooltip="Section 7: Observability and alerting layer. Monitors API health, worker status, task queue depth, job success/failure rates, infrastructure metrics. Centralized logging via Kafka hulk cluster.">
-          <mxGeometry x="960" y="900" width="580" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="obs_monitoring" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2EBF2;strokeColor=#00695C;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;📊 Monitoring&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Metrics / Dashboards&lt;/font&gt;" vertex="1" tooltip="Monitoring infrastructure (Prometheus/Grafana style). Collects metrics from all services. Dashboards for real-time visibility into system health, job throughput, error rates.">
-          <mxGeometry x="990" y="960" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="obs_logging" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2EBF2;strokeColor=#00695C;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;📝 Centralized Logging&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;ELK / Splunk&lt;/font&gt;" vertex="1" tooltip="Centralized logging aggregation (ELK stack or Splunk). All service logs shipped centrally. Supports structured logging, full-text search, and cross-service correlation.">
-          <mxGeometry x="1190" y="960" width="170" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="obs_alerts" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2EBF2;strokeColor=#00695C;fontSize=11;fontStyle=1;shadow=1;" value="&lt;b&gt;🚨 Alerting&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Thresholds / PagerDuty&lt;/font&gt;" vertex="1" tooltip="Alerting system with threshold-based and anomaly detection. Notifies team on job failures, high latency, queue backlog, infrastructure issues via PagerDuty/Slack/email.">
-          <mxGeometry x="1400" y="960" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="obs_tracing" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2EBF2;strokeColor=#00695C;fontSize=11;shadow=1;" value="🔍 Distributed Tracing&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Request Correlation&lt;/font&gt;" vertex="1" tooltip="Distributed tracing (Jaeger/Zipkin). Tracks request flow across MAPPS services: API → Queue → Worker → Storage → Kafka.">
-          <mxGeometry x="990" y="1050" width="170" height="45" as="geometry" />
+        <!-- ==================== EXTERNAL SYSTEMS ==================== -->
+        <mxCell id="bnd_external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;External Systems &amp; Integration&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1750" y="620" width="550" height="200" as="geometry" />
         </mxCell>
 
-        <!-- Observability connections -->
-        <mxCell id="conn_workers_mon" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#00695C;strokeWidth=1;dashed=1;" edge="1" source="proc_workers" target="obs_monitoring" value="&lt;font style=&quot;font-size:8px;&quot;&gt;metrics&lt;/font&gt;">
+        <mxCell id="ext_trm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;🏦 TRM&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Trade Risk Management&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1780" y="670" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_chr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=12;fontStyle=1;" value="&lt;b&gt;🧮 MAPPS CHR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Calculation Engine&lt;/font&gt;" vertex="1">
+          <mxGeometry x="2000" y="670" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_simob" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=11;" value="📈 Simob&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Market Data Feed&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1780" y="740" width="140" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_market" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=11;" value="📡 Market Systems&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Service Layer&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1960" y="740" width="140" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_data_sources" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;fontSize=11;" value="🔌 External Data Sources&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Connected via Adapter&lt;/font&gt;" vertex="1">
+          <mxGeometry x="2140" y="740" width="140" height="42" as="geometry" />
+        </mxCell>
+
+        <!-- External connections -->
+        <mxCell id="conn_dc_trm" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#388E3C;strokeWidth=2;" edge="1" source="be_data_ctrl" target="ext_trm" value="&lt;font style=&quot;font-size:9px;&quot;&gt;API ↔&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="conn_flask_log" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#00695C;strokeWidth=1;dashed=1;" edge="1" source="be_flask" target="obs_logging" value="&lt;font style=&quot;font-size:8px;&quot;&gt;logs&lt;/font&gt;">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="conn_kafka_log" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#00695C;strokeWidth=1;dashed=1;" edge="1" source="msg_kafka" target="obs_logging" value="&lt;font style=&quot;font-size:8px;&quot;&gt;log events (hulk)&lt;/font&gt;">
+        <mxCell id="conn_dc_ext" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#388E3C;strokeWidth=1;dashed=1;" edge="1" source="be_data_ctrl" target="ext_data_sources" value="&lt;font style=&quot;font-size:9px;&quot;&gt;external connect&lt;/font&gt;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ==================== FLOW ANNOTATION (Top-level data flow) ==================== -->
-        <mxCell id="flow_note" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=15;fillColor=#FFFDE7;strokeColor=#FBC02D;fontSize=10;shadow=1;align=left;spacingLeft=8;" value="&lt;b&gt;Data Flow:&lt;/b&gt;&lt;br&gt;1. User/TRM → API (NGINX→Flask)&lt;br&gt;2. Flask → Task Queue (submit)&lt;br&gt;3. Scheduler → Task Queue (cron)&lt;br&gt;4. Workers consume → execute Kernel&lt;br&gt;5. Kernel ↔ Storage (read/write)&lt;br&gt;6. Kernel → Kafka (publish results)&lt;br&gt;7. All → Observability (metrics/logs)" vertex="1" tooltip="High-level data flow through the MAPPS platform.">
-          <mxGeometry x="1840" y="80" width="230" height="145" as="geometry" />
+        <!-- ==================== MAPPS PLATFORM (Container Build) ==================== -->
+        <mxCell id="bnd_mapps_platform" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;MAPPS Platform (Container Build &amp; Runtime)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="1040" width="1050" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="mapps_base_img" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=12;fontStyle=1;" value="&lt;b&gt;🐳 MAPPS Base Image&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Platform-provided base container&lt;/font&gt;" vertex="1" tooltip="MAPPS team provides base image. Used to wire up model and adapter with external connections as part of container.">
+          <mxGeometry x="70" y="1100" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="mapps_wireup" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=11;" value="🔧 Wire-up: Model + Adapter&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;+ External Connections&lt;/font&gt;" vertex="1" tooltip="MAPPS builds image based on base image to wire up model and adapter with external connections as part of the container.">
+          <mxGeometry x="350" y="1100" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mapps_container" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#388E3C;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;📦 Application Container&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Model + Adapter + Connections&lt;/font&gt;" vertex="1" tooltip="Final container image with model, adapter, and external connections wired up by MAPPS platform.">
+          <mxGeometry x="610" y="1100" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ICHP / IPC -->
+        <mxCell id="mapps_ichp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=12;fontStyle=1;strokeWidth=2;" value="&lt;b&gt;☸️ ICHP&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;OpenShift Managed K8s Cluster&lt;br&gt;inside IPC (ING Private Cloud)&lt;/font&gt;" vertex="1" tooltip="ICHP - OpenShift managed Kubernetes cluster management inside IPC (ING Private Cloud). Containers run here.">
+          <mxGeometry x="70" y="1185" width="280" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- MAPPS connections -->
+        <mxCell id="conn_base_wireup" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#388E3C;strokeWidth=2;" edge="1" source="mapps_base_img" target="mapps_wireup" value="&lt;font style=&quot;font-size:9px;&quot;&gt;extend&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_wireup_container" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#388E3C;strokeWidth=2;" edge="1" source="mapps_wireup" target="mapps_container" value="&lt;font style=&quot;font-size:9px;&quot;&gt;build&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_container_ichp" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#E65100;strokeWidth=2;" edge="1" source="mapps_container" target="mapps_ichp" value="&lt;font style=&quot;font-size:9px;&quot;&gt;runs in&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CI/CD - AZURE DEVOPS / ONEPIPELINE ==================== -->
+        <mxCell id="bnd_cicd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;CI/CD — OnePipeline (Azure DevOps)&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1140" y="1040" width="560" height="240" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cicd_yaml" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;📄 YAML Config&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;API/Scheduler Route Definitions&lt;br&gt;Per Project Code&lt;/font&gt;" vertex="1" tooltip="YAML file in each project code defining API routes and scheduler definitions. Tracked in OnePipeline (Azure DevOps).">
+          <mxGeometry x="1170" y="1100" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd_azure_artifact" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=12;fontStyle=1;" value="&lt;b&gt;📦 Azure Artifacts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px;font-weight:normal;&quot;&gt;Python Packages&lt;br&gt;(Frontend / Backend API / Worker)&lt;/font&gt;" vertex="1" tooltip="All components (Frontend, Backend API, Backend Worker/Task) are artifacted in Azure as Python packages following hexagonal/port-adapter architecture.">
+          <mxGeometry x="1430" y="1100" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd_pipeline" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;" value="🔀 OnePipeline&lt;br&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;Build → Test → Deploy&lt;/font&gt;" vertex="1" tooltip="OnePipeline (Azure DevOps) CI/CD pipeline. Builds, tests, and deploys Python packages.">
+          <mxGeometry x="1170" y="1185" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd_hexagonal" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4FC3F7;strokeColor=#0277BD;fontSize=10;dashed=1;" value="Hexagonal / Port-Adapter Architecture" vertex="1" tooltip="All packages follow hexagonal (port-adapter) architecture pattern.">
+          <mxGeometry x="1430" y="1190" width="230" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- CI/CD connections -->
+        <mxCell id="conn_yaml_pipeline" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=1;" edge="1" source="cicd_yaml" target="cicd_pipeline">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn_artifact_pipeline" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jetSize=auto;html=1;strokeColor=#0277BD;strokeWidth=1;" edge="1" source="cicd_azure_artifact" target="cicd_pipeline">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== OBSERVABILITY ==================== -->
+        <mxCell id="bnd_observability" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;verticalAlign=top;align=left;spacingLeft=14;spacingTop=10;arcSize=6;" value="&lt;b style=&quot;font-size:16px;color:#212121;&quot;&gt;Observability / Monitoring&lt;/b&gt;" vertex="1">
+          <mxGeometry x="1750" y="860" width="550" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="obs_monitoring" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;📊 Monitoring&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Metrics / Dashboards&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1780" y="910" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="obs_logging" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;📝 Centralized Logging&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;ELK / Splunk&lt;/font&gt;" vertex="1">
+          <mxGeometry x="1960" y="910" width="160" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="obs_alerts" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;fontSize=11;fontStyle=1;" value="&lt;b&gt;🚨 Alerting&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px;font-weight:normal;&quot;&gt;Thresholds&lt;/font&gt;" vertex="1">
+          <mxGeometry x="2150" y="910" width="120" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== DATA FLOW NOTE ==================== -->
+        <mxCell id="flow_note" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=15;fillColor=#FAFAFA;strokeColor=#616161;fontSize=10;align=left;spacingLeft=8;" value="&lt;b&gt;Data Flow:&lt;/b&gt;&lt;br&gt;1. Business User → SSO → Access Matrix → ACE → Authorized&lt;br&gt;2. User → Frontend (Web Component) → NGINX → Flask API&lt;br&gt;3. Flask / Scheduler → Task Queue (Redis/Celery)&lt;br&gt;4. Workers consume → Model/Kernel → Adapter&lt;br&gt;5. Adapter connects external via Data Controller Interface&lt;br&gt;6. Adapter reads S3 (cache) + consumes Kafka (DMD/IPA TS)&lt;br&gt;7. Adapter → generates Report → S3 + Kafka publish&lt;br&gt;8. Celery/Redis reads config from Persistence (Flask Dict)&lt;br&gt;9. YAML routes tracked in OnePipeline (Azure DevOps)&lt;br&gt;10. All packaged as Azure Artifacts (Hexagonal arch)&lt;br&gt;11. MAPPS builds container (base img + model + adapter)&lt;br&gt;12. Container runs in ICHP (OpenShift K8s in IPC)" vertex="1">
+          <mxGeometry x="2350" y="300" width="380" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SAMPLE CONFIG ANNOTATION ==================== -->
+        <mxCell id="config_note" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;size=15;fillColor=#FAFAFA;strokeColor=#616161;fontSize=9;align=left;spacingLeft=6;" value="&lt;b&gt;Sample YAML Config (per project):&lt;/b&gt;&lt;br&gt;views:&lt;br&gt;  - component_path: src/s3_manager.js&lt;br&gt;  - component_path: src/gmdb_manager.js&lt;br&gt;  - component_path: src/kafka_manager.js&lt;br&gt;apis:&lt;br&gt;  - function_name: generate_implied_forwards_data&lt;br&gt;    sub_module: api | method: post&lt;br&gt;  - function_name: consumer_for_adapter&lt;br&gt;    sub_module: kafka_api | method: post&lt;br&gt;  - function_name: s3_file_manager&lt;br&gt;    sub_module: api | method: post/get/delete/put&lt;br&gt;scheduled_jobs:&lt;br&gt;  - function_name: trigger_fx_spot_fetcher_cron&lt;br&gt;    cron_params: '0 7 1-3 * 1-5'&lt;br&gt;    time_zone: Europe/Amsterdam" vertex="1" tooltip="Sample YAML configuration file tracked in OnePipeline (Azure DevOps) defining views, APIs, and scheduled jobs for each project.">
+          <mxGeometry x="2350" y="550" width="380" height="260" as="geometry" />
         </mxCell>
 
       </root>

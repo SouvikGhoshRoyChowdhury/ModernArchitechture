@@ -14,7 +14,7 @@ from kafka_context import AvroMapping, KafkaContext, SubjectNameStrategy
 class KafkaContextContractTests(unittest.TestCase):
     def test_avro_schema_id_not_required(self):
         # Pattern 2: a context can be built without any static schema id.
-        ctx = KafkaContext(topic="P00176.totem_faas_report_results", cluster_name="hulk")
+        ctx = KafkaContext(topic="test-topic", cluster_name="hulk")
         self.assertIsNone(ctx.avro_schema_id)
 
     def test_default_subject_name_strategy_is_record_name(self):

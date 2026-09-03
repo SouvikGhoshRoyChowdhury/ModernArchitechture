@@ -6,6 +6,7 @@ import ipaddress
 import json
 import re
 import socket
+import unicodedata
 import zipfile
 from collections import deque
 from dataclasses import asdict, dataclass
@@ -24,41 +25,19 @@ from bs4 import BeautifulSoup
 
 YEAR_PATTERN = re.compile(r"\b(19\d{2}|20\d{2})\b")
 
-#VALUE_PATTERN = re.compile(
-#    r"""
-#    (?P<value>
-#        -?
-#        \d{1,3}(?:[,\s]\d{3})*(?:\.\d+)?
-#        |
-#        -?\d+(?:\.\d+)?
-#    )
-#    \s*
-#    (?P<unit>
-#        %|
-#        tCO2e|
-#        ktCO2e|
-#        MtCO2e|
-#        tonnes?\s+CO2e|
-#        metric\s+tons?\s+CO2e|
-#        MWh|
-#        GWh|
-#        kWh|
-#        GJ|
-#        m3|
-#        megalitres?|
-#        tonnes?|
-#        metric\s+tons?|
-#        kilograms?|
-#        kg|
-#        employees?|
-#        FTE
-#    )?
-#    """,
-#    re.IGNORECASE | re.VERBOSE,
-##)
+# Characters that are illegal in the Office Open XML (xlsx) format.
+ILLEGAL_XML_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+# Maximum characters Excel allows in a single cell.
+EXCEL_CELL_LIMIT = 32_767
+
+HTML_CONTENT_TYPES = {"text/html", "application/xhtml+xml", ""}
+
 
 @dataclass
 class BuildRequest:
+    """Immutable description of a single evidence-pack build request."""
+
     customer_name: str
     sector: str
     website: str
@@ -74,6 +53,8 @@ class BuildRequest:
 
 @dataclass
 class BuildSettings:
+    """Tunable limits and defaults that govern crawling and extraction."""
+
     max_sources: int = 30
     max_crawl_depth: int = 1
     timeout_seconds: int = 30
@@ -83,24 +64,46 @@ class BuildSettings:
 
 
 def utc_now() -> str:
+    """Return the current UTC time as an ISO-8601 string."""
     return datetime.now(timezone.utc).isoformat()
 
 
 def safe_name(value: str) -> str:
+    """Convert an arbitrary string into a filesystem-safe token."""
     result = re.sub(r"[^A-Za-z0-9._-]+", "_", value.strip())
     return result.strip("_") or "unknown"
 
-def load_sector_reference(
-    source_file: Path,
-    sector: str,
-) -> pd.DataFrame:
-    """
-    Load approved sector source guidance for the selected sector.
 
-    This file is a source catalogue, not a quantitative KPI taxonomy.
-    It must not be used to claim that a company follows, meets, leads,
-    or underperforms a sector pathway.
-    """
+def clean_text(value: Any) -> str:
+    """Normalize unicode and strip characters that corrupt xlsx/markdown output."""
+    if value in (None, ""):
+        return ""
+
+    text = unicodedata.normalize("NFKC", str(value))
+    text = ILLEGAL_XML_CHARS.sub(" ", text)
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def clean_cell_text(value: Any, raw_hint: str = "") -> str:
+    """Clean text and truncate to Excel's cell limit, pointing to raw file when cut."""
+    text = clean_text(value)
+
+    if len(text) > EXCEL_CELL_LIMIT:
+        suffix = (
+            f" …[truncated for Excel — full text in {raw_hint}]"
+            if raw_hint
+            else " …[truncated for Excel — full text in extracted_text/]"
+        )
+        keep = EXCEL_CELL_LIMIT - len(suffix)
+        text = text[:keep] + suffix
+
+    return text
+
+
+def load_sector_reference(source_file: Path, sector: str) -> pd.DataFrame:
+    """Load the approved source catalogue rows for the requested sector."""
     if not source_file.exists():
         raise FileNotFoundError(
             f"Sector source catalogue was not found: {source_file}"
@@ -108,15 +111,8 @@ def load_sector_reference(
 
     reference = pd.read_csv(source_file).fillna("")
 
-    required_columns = {
-        "Sector",
-        "Display_Name",
-        "KPIs_Data_Sources",
-    }
-
-    missing_columns = required_columns.difference(
-        reference.columns
-    )
+    required_columns = {"Sector", "Display_Name", "KPIs_Data_Sources"}
+    missing_columns = required_columns.difference(reference.columns)
 
     if missing_columns:
         raise ValueError(
@@ -135,13 +131,13 @@ def load_sector_reference(
 
     return selected
 
+
 def validate_public_hostname(hostname: str) -> None:
+    """Ensure a hostname resolves only to public (non-internal) IP addresses."""
     try:
         records = socket.getaddrinfo(hostname, None)
     except socket.gaierror as exc:
-        raise ValueError(
-            f"Cannot resolve hostname: {hostname}"
-        ) from exc
+        raise ValueError(f"Cannot resolve hostname: {hostname}") from exc
 
     for record in records:
         address = ipaddress.ip_address(record[4][0])
@@ -160,6 +156,7 @@ def validate_public_hostname(hostname: str) -> None:
 
 
 def validate_url(url: str, allowed_hosts: set[str]) -> None:
+    """Validate scheme, hostname allow-listing and public resolvability of a URL."""
     parsed = urlparse(url)
 
     if parsed.scheme not in {"http", "https"}:
@@ -179,10 +176,9 @@ def validate_url(url: str, allowed_hosts: set[str]) -> None:
 
 
 def robots_allows(
-    session: requests.Session,
-    url: str,
-    settings: BuildSettings,
+    session: requests.Session, url: str, settings: BuildSettings
 ) -> bool:
+    """Return whether robots.txt permits fetching the given URL (fail-open)."""
     parsed = urlparse(url)
     robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
 
@@ -206,9 +202,9 @@ def robots_allows(
 
 
 def read_limited_response(
-    response: requests.Response,
-    maximum_bytes: int,
+    response: requests.Response, maximum_bytes: int
 ) -> bytes:
+    """Stream a response body, aborting if it exceeds the permitted byte limit."""
     result = bytearray()
 
     for chunk in response.iter_content(chunk_size=65536):
@@ -219,8 +215,7 @@ def read_limited_response(
 
         if len(result) > maximum_bytes:
             raise ValueError(
-                f"Source is larger than the permitted "
-                f"{maximum_bytes} bytes."
+                f"Source is larger than the permitted {maximum_bytes} bytes."
             )
 
     return bytes(result)
@@ -232,12 +227,11 @@ def fetch_url(
     allowed_hosts: set[str],
     settings: BuildSettings,
 ) -> tuple[bytes, str, str]:
+    """Fetch a validated, robots-permitted URL and return content, type and final URL."""
     validate_url(url, allowed_hosts)
 
     if not robots_allows(session, url, settings):
-        raise PermissionError(
-            f"robots.txt does not permit retrieval: {url}"
-        )
+        raise PermissionError(f"robots.txt does not permit retrieval: {url}")
 
     response = session.get(
         url,
@@ -257,10 +251,7 @@ def fetch_url(
     final_url = response.url
     validate_url(final_url, allowed_hosts)
 
-    content = read_limited_response(
-        response,
-        settings.max_download_bytes,
-    )
+    content = read_limited_response(response, settings.max_download_bytes)
 
     content_type = (
         response.headers.get("Content-Type", "")
@@ -272,11 +263,19 @@ def fetch_url(
     return content, content_type, final_url
 
 
+def is_pdf_response(content: bytes, content_type: str, final_url: str) -> bool:
+    """Return True when a response should be treated as a PDF document."""
+    return (
+        content_type == "application/pdf"
+        or final_url.lower().split("?")[0].endswith(".pdf")
+        or content.startswith(b"%PDF")
+    )
+
+
 def extract_html(
-    content: bytes,
-    source_url: str,
-    maximum_characters: int,
+    content: bytes, source_url: str, maximum_characters: int
 ) -> tuple[str, str, list[str], list[str]]:
+    """Extract title, cleaned text, table strings and links from an HTML page."""
     soup = BeautifulSoup(content, "html.parser")
 
     for element in soup(
@@ -285,37 +284,24 @@ def extract_html(
         element.decompose()
 
     title = (
-        soup.title.get_text(" ", strip=True)
-        if soup.title
-        else source_url
+        soup.title.get_text(" ", strip=True) if soup.title else source_url
     )
 
-    text = soup.get_text("\n", strip=True)
-    text = re.sub(r"\n{3,}", "\n\n", text)
-    text = text[:maximum_characters]
+    text = clean_text(soup.get_text("\n", strip=True))[:maximum_characters]
 
     tables: list[str] = []
-
-    for table_number, table in enumerate(
-        soup.find_all("table"),
-        start=1,
-    ):
-        rows: list[str] = []
-
-        for row in table.find_all("tr"):
-            cells = [
+    for table_number, table in enumerate(soup.find_all("table"), start=1):
+        rows = [
+            " | ".join(
                 cell.get_text(" ", strip=True)
                 for cell in row.find_all(["th", "td"])
-            ]
-
-            if cells:
-                rows.append(" | ".join(cells))
-
-        if rows:
-            tables.append(
-                f"HTML table {table_number}\n"
-                + "\n".join(rows)
             )
+            for row in table.find_all("tr")
+            if row.find_all(["th", "td"])
+        ]
+        rows = [row for row in rows if row.strip()]
+        if rows:
+            tables.append(f"HTML table {table_number}\n" + "\n".join(rows))
 
     links = [
         urljoin(source_url, anchor["href"])
@@ -326,9 +312,9 @@ def extract_html(
 
 
 def extract_pdf(
-    content: bytes,
-    maximum_characters: int,
+    content: bytes, maximum_characters: int
 ) -> tuple[str, list[dict[str, Any]], list[dict[str, Any]]]:
+    """Extract title, per-page text and tables from a PDF document."""
     page_records: list[dict[str, Any]] = []
     table_records: list[dict[str, Any]] = []
 
@@ -337,23 +323,15 @@ def extract_pdf(
     title = metadata.get("title") or "PDF document"
 
     extracted_characters = 0
-
     for page_number, page in enumerate(document, start=1):
         if extracted_characters >= maximum_characters:
             break
 
-        page_text = page.get_text("text", sort=True).strip()
-
         remaining = maximum_characters - extracted_characters
-        page_text = page_text[:remaining]
+        page_text = clean_text(page.get_text("text", sort=True))[:remaining]
         extracted_characters += len(page_text)
 
-        page_records.append(
-            {
-                "page": page_number,
-                "text": page_text,
-            }
-        )
+        page_records.append({"page": page_number, "text": page_text})
 
     document.close()
 
@@ -365,25 +343,21 @@ def extract_pdf(
                 tables = []
 
             for table_number, table in enumerate(tables, start=1):
-                rows: list[str] = []
-
-                for row in table or []:
-                    cells = [
-                        str(cell).strip()
-                        if cell is not None
-                        else ""
+                rows = [
+                    " | ".join(
+                        str(cell).strip() if cell is not None else ""
                         for cell in row
-                    ]
-
-                    if any(cells):
-                        rows.append(" | ".join(cells))
-
+                    )
+                    for row in (table or [])
+                    if any(cell is not None for cell in row)
+                ]
+                rows = [row for row in rows if row.strip()]
                 if rows:
                     table_records.append(
                         {
                             "page": page_number,
                             "table_number": table_number,
-                            "text": "\n".join(rows),
+                            "text": clean_text("\n".join(rows)),
                         }
                     )
 
@@ -391,41 +365,32 @@ def extract_pdf(
 
 
 def relevant_link(url: str, keywords: list[str]) -> bool:
+    """Return True for PDFs or links whose URL matches any nice-to-have keyword."""
     normalized = url.lower().replace("_", " ").replace("-", " ")
 
     if normalized.endswith(".pdf"):
         return True
 
-    return any(
-        keyword.lower() in normalized
-        for keyword in keywords
-    )
+    if not keywords:
+        return True
+
+    return any(keyword.lower() in normalized for keyword in keywords)
 
 
 def contains_excluded_content(
-    url: str,
-    title: str,
-    excluded_keywords: list[str],
+    url: str, title: str, excluded_keywords: list[str]
 ) -> bool:
-    """
-    Exclude podcasts and other disallowed content using URL and title.
-
-    Page body text is not checked because a normal article may contain
-    a harmless navigation link or reference to a podcast.
-    """
+    """Return True when a URL or title matches disallowed (e.g. podcast) keywords."""
     searchable = f"{url} {title}".lower()
-
     return any(
-        keyword.lower() in searchable
-        for keyword in excluded_keywords
+        keyword.lower() in searchable for keyword in excluded_keywords
     )
 
 
 def is_allowed_ing_child_url(
-    root_url: str,
-    candidate_url: str,
-    excluded_keywords: list[str],
+    root_url: str, candidate_url: str, excluded_keywords: list[str]
 ) -> bool:
+    """Return True when a candidate URL is an allowed child of the ING guidance root."""
     root = urlparse(root_url)
     candidate = urlparse(candidate_url)
 
@@ -435,19 +400,13 @@ def is_allowed_ing_child_url(
     if candidate.hostname != root.hostname:
         return False
 
-    root_path = root.path.rstrip("/")
-
-    if not candidate.path.startswith(root_path):
+    if not candidate.path.startswith(root.path.rstrip("/")):
         return False
 
-    if contains_excluded_content(
-        candidate_url,
-        "",
-        excluded_keywords,
-    ):
-        return False
+    return not contains_excluded_content(
+        candidate_url, "", excluded_keywords
+    )
 
-    return True
 
 def add_source(
     source_records: list[dict[str, Any]],
@@ -461,21 +420,15 @@ def add_source(
     text_records: list[dict[str, Any]],
     table_records: list[dict[str, Any]],
 ) -> str:
-    """
-    Add a source and its extracted evidence.
-
-    Source groups:
-    Customer_Public
-    Customer_Public_Upload
-    ING_Public_Sector_Guidance
-    """
+    """Register a source and append its cleaned text and table evidence rows."""
     source_id = f"S{len(source_records) + 1:04d}"
+    raw_hint = f"extracted_text/{source_id}.txt"
 
     source_records.append(
         {
             "Source_ID": source_id,
             "Source_Group": source_group,
-            "Title": title,
+            "Title": clean_cell_text(title),
             "Source_URL": source_url,
             "Source_Type": source_type,
             "Content_Type": content_type,
@@ -488,41 +441,62 @@ def add_source(
     for item in text_records:
         evidence_records.append(
             {
-                "Evidence_ID": (
-                    f"E{len(evidence_records) + 1:05d}"
-                ),
+                "Evidence_ID": f"E{len(evidence_records) + 1:05d}",
                 "Source_ID": source_id,
                 "Source_Group": source_group,
                 "Source_URL": source_url,
                 "Page": item.get("page", ""),
                 "Evidence_Type": item.get(
-                    "evidence_type",
-                    f"{source_type}_TEXT",
+                    "evidence_type", f"{source_type}_TEXT"
                 ),
-                "Section": item.get("section", ""),
-                "Evidence_Text": item.get("text", ""),
+                "Section": clean_cell_text(item.get("section", "")),
+                "Evidence_Text": clean_cell_text(
+                    item.get("text", ""), raw_hint
+                ),
             }
         )
 
     for item in table_records:
         evidence_records.append(
             {
-                "Evidence_ID": (
-                    f"E{len(evidence_records) + 1:05d}"
-                ),
+                "Evidence_ID": f"E{len(evidence_records) + 1:05d}",
                 "Source_ID": source_id,
                 "Source_Group": source_group,
                 "Source_URL": source_url,
                 "Page": item.get("page", ""),
                 "Evidence_Type": f"{source_type}_TABLE",
-                "Section": (
-                    f"Table {item.get('table_number', '')}"
+                "Section": f"Table {item.get('table_number', '')}",
+                "Evidence_Text": clean_cell_text(
+                    item.get("text", ""), raw_hint
                 ),
-                "Evidence_Text": item.get("text", ""),
             }
         )
 
     return source_id
+
+
+def write_extracted_text(
+    directory: Path, source_id: str, full_text: str
+) -> None:
+    """Persist the full, untruncated extracted text for a source to disk."""
+    (directory / f"{source_id}.txt").write_text(
+        clean_text(full_text), encoding="utf-8"
+    )
+
+
+def pages_to_text(pages: list[dict[str, Any]]) -> str:
+    """Join per-page PDF records into a single readable text block."""
+    return "\n\n".join(
+        f"Page {page['page']}\n{page['text']}" for page in pages
+    )
+
+
+def html_table_records(tables: list[str]) -> list[dict[str, Any]]:
+    """Convert extracted HTML table strings into evidence table records."""
+    return [
+        {"page": "", "table_number": number, "text": text}
+        for number, text in enumerate(tables, start=1)
+    ]
 
 
 def collect_web_sources(
@@ -532,14 +506,11 @@ def collect_web_sources(
     raw_directory: Path,
     extracted_directory: Path,
 ) -> tuple[
-    list[dict[str, Any]],
-    list[dict[str, Any]],
-    list[dict[str, Any]],
+    list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]
 ]:
+    """Crawl customer seed URLs and collect all public evidence (keywords optional)."""
     seed_urls = list(
-        dict.fromkeys(
-            [request.website, *request.approved_source_urls]
-        )
+        dict.fromkeys([request.website, *request.approved_source_urls])
     )
 
     allowed_hosts = {
@@ -568,22 +539,12 @@ def collect_web_sources(
 
         try:
             content, content_type, final_url = fetch_url(
-                session,
-                normalized_url,
-                allowed_hosts,
-                settings,
+                session, normalized_url, allowed_hosts, settings
             )
 
-            is_pdf = (
-                content_type == "application/pdf"
-                or final_url.lower().split("?")[0].endswith(".pdf")
-                or content.startswith(b"%PDF")
-            )
-
-            if is_pdf:
+            if is_pdf_response(content, content_type, final_url):
                 title, pages, tables = extract_pdf(
-                    content,
-                    settings.max_text_characters_per_source,
+                    content, settings.max_text_characters_per_source
                 )
                 source_id = add_source(
                     source_records=source_records,
@@ -602,29 +563,15 @@ def collect_web_sources(
                     f"{source_id}_"
                     f"{safe_name(Path(urlparse(final_url).path).name)}"
                 )
-
                 if not pdf_name.lower().endswith(".pdf"):
                     pdf_name += ".pdf"
 
                 (raw_directory / pdf_name).write_bytes(content)
-
-                extracted_text = "\n\n".join(
-                    f"Page {page['page']}\n{page['text']}"
-                    for page in pages
+                write_extracted_text(
+                    extracted_directory, source_id, pages_to_text(pages)
                 )
 
-                (
-                    extracted_directory / f"{source_id}.txt"
-                ).write_text(
-                    extracted_text,
-                    encoding="utf-8",
-                )
-
-            elif content_type in {
-                "text/html",
-                "application/xhtml+xml",
-                "",
-            }:
+            elif content_type in HTML_CONTENT_TYPES:
                 title, text, tables, links = extract_html(
                     content,
                     final_url,
@@ -640,46 +587,27 @@ def collect_web_sources(
                     }
                 ]
 
-                table_records = [
-                    {
-                        "page": "",
-                        "table_number": table_number,
-                        "text": table_text,
-                    }
-                    for table_number, table_text in enumerate(
-                        tables,
-                        start=1,
-                    )
-                ]
-
                 source_id = add_source(
-                source_records=source_records,
-                evidence_records=evidence_records,
-                source_url=final_url,
-                title=title,
-                source_type="HTML",
-                source_group="Customer_Public",
-                content_type=content_type,
-                content=content,
-                text_records=text_records,
-                table_records=table_records,
-         )
-
-                (
-                    extracted_directory / f"{source_id}.txt"
-                ).write_text(
-                    text,
-                    encoding="utf-8",
+                    source_records=source_records,
+                    evidence_records=evidence_records,
+                    source_url=final_url,
+                    title=title,
+                    source_type="HTML",
+                    source_group="Customer_Public",
+                    content_type=content_type,
+                    content=content,
+                    text_records=text_records,
+                    table_records=html_table_records(tables),
                 )
+
+                write_extracted_text(extracted_directory, source_id, text)
 
                 if depth < settings.max_crawl_depth:
                     for link in links:
                         parsed_link = urlparse(link)
-
                         if (
                             parsed_link.hostname
-                            and parsed_link.hostname.lower()
-                            in allowed_hosts
+                            and parsed_link.hostname.lower() in allowed_hosts
                             and relevant_link(link, keywords)
                             and link.split("#")[0] not in visited
                         ):
@@ -711,55 +639,29 @@ def collect_ing_sector_guidance(
     error_records: list[dict[str, Any]],
     extracted_directory: Path,
 ) -> None:
-    """
-    Collect public ING sector guidance separately from customer evidence.
-
-    Only pages below the configured sector URL are followed.
-    Podcast and audio-related pages are excluded.
-    """
+    """Crawl approved ING sector guidance pages, excluding podcast/audio content."""
     if not guidance_url:
         return
 
     parsed_root = urlparse(guidance_url)
 
     if parsed_root.scheme not in {"http", "https"}:
-        raise ValueError(
-            "ING sector guidance URL must use HTTP or HTTPS."
-        )
+        raise ValueError("ING sector guidance URL must use HTTP or HTTPS.")
 
     if not parsed_root.hostname:
-        raise ValueError(
-            "ING sector guidance URL has no hostname."
-        )
+        raise ValueError("ING sector guidance URL has no hostname.")
 
     hostname = parsed_root.hostname.lower()
-
-    if not (
-        hostname == "ing.nl"
-        or hostname.endswith(".ing.nl")
-    ):
+    if not (hostname == "ing.nl" or hostname.endswith(".ing.nl")):
         raise ValueError(
             "ING sector guidance must use an approved ing.nl URL."
         )
 
     excluded_keywords = sector_config.get(
-        "excluded_ing_content_keywords",
-        [],
+        "excluded_ing_content_keywords", []
     )
-
-    max_pages = int(
-        sector_config.get(
-            "ing_sector_guidance_max_pages",
-            30,
-        )
-    )
-
-    max_depth = int(
-        sector_config.get(
-            "ing_sector_guidance_max_depth",
-            2,
-        )
-    )
+    max_pages = int(sector_config.get("ing_sector_guidance_max_pages", 30))
+    max_depth = int(sector_config.get("ing_sector_guidance_max_depth", 2))
 
     allowed_hosts = {hostname}
     queue = deque([(guidance_url, 0)])
@@ -769,10 +671,7 @@ def collect_ing_sector_guidance(
     ing_extract_directory = (
         extracted_directory / "ing_public_sector_guidance"
     )
-    ing_extract_directory.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
+    ing_extract_directory.mkdir(parents=True, exist_ok=True)
 
     ing_page_count = 0
 
@@ -784,9 +683,7 @@ def collect_ing_sector_guidance(
             continue
 
         if not is_allowed_ing_child_url(
-            guidance_url,
-            normalized_url,
-            excluded_keywords,
+            guidance_url, normalized_url, excluded_keywords
         ):
             continue
 
@@ -800,24 +697,13 @@ def collect_ing_sector_guidance(
                 settings=settings,
             )
 
-            is_pdf = (
-                content_type == "application/pdf"
-                or final_url.lower()
-                .split("?")[0]
-                .endswith(".pdf")
-                or content.startswith(b"%PDF")
-            )
-
-            if is_pdf:
+            if is_pdf_response(content, content_type, final_url):
                 title, pages, tables = extract_pdf(
-                    content,
-                    settings.max_text_characters_per_source,
+                    content, settings.max_text_characters_per_source
                 )
 
                 if contains_excluded_content(
-                    final_url,
-                    title,
-                    excluded_keywords,
+                    final_url, title, excluded_keywords
                 ):
                     continue
 
@@ -827,42 +713,24 @@ def collect_ing_sector_guidance(
                     source_url=final_url,
                     title=title,
                     source_type="PDF",
-                    source_group=(
-                        "ING_Public_Sector_Guidance"
-                    ),
+                    source_group="ING_Public_Sector_Guidance",
                     content_type=content_type,
                     content=content,
                     text_records=pages,
                     table_records=tables,
                 )
 
-                extracted_text = "\n\n".join(
-                    (
-                        f"Page {page['page']}\n"
-                        f"{page['text']}"
-                    )
-                    for page in pages
+                write_extracted_text(
+                    ing_extract_directory,
+                    source_id,
+                    pages_to_text(pages),
                 )
-
-                (
-                    ing_extract_directory
-                    / f"{source_id}.txt"
-                ).write_text(
-                    extracted_text,
-                    encoding="utf-8",
-                )
-
                 ing_page_count += 1
                 continue
 
-            if content_type not in {
-                "text/html",
-                "application/xhtml+xml",
-                "",
-            }:
+            if content_type not in HTML_CONTENT_TYPES:
                 raise ValueError(
-                    f"Unsupported ING content type: "
-                    f"{content_type}"
+                    f"Unsupported ING content type: {content_type}"
                 )
 
             title, text, tables, links = extract_html(
@@ -874,9 +742,7 @@ def collect_ing_sector_guidance(
             )
 
             if contains_excluded_content(
-                final_url,
-                title,
-                excluded_keywords,
+                final_url, title, excluded_keywords
             ):
                 continue
 
@@ -889,18 +755,6 @@ def collect_ing_sector_guidance(
                 }
             ]
 
-            table_records = [
-                {
-                    "page": "",
-                    "table_number": table_number,
-                    "text": table_text,
-                }
-                for table_number, table_text in enumerate(
-                    tables,
-                    start=1,
-                )
-            ]
-
             source_id = add_source(
                 source_records=source_records,
                 evidence_records=evidence_records,
@@ -911,41 +765,26 @@ def collect_ing_sector_guidance(
                 content_type=content_type,
                 content=content,
                 text_records=text_records,
-                table_records=table_records,
+                table_records=html_table_records(tables),
             )
 
-            (
-                ing_extract_directory
-                / f"{source_id}.txt"
-            ).write_text(
-                text,
-                encoding="utf-8",
-            )
-
+            write_extracted_text(ing_extract_directory, source_id, text)
             ing_page_count += 1
 
             if depth < max_depth:
                 for link in links:
                     clean_link = link.split("#")[0]
-
-                    if (
-                        clean_link not in visited
-                        and is_allowed_ing_child_url(
-                            root_url=guidance_url,
-                            candidate_url=clean_link,
-                            excluded_keywords=excluded_keywords,
-                        )
+                    if clean_link not in visited and is_allowed_ing_child_url(
+                        root_url=guidance_url,
+                        candidate_url=clean_link,
+                        excluded_keywords=excluded_keywords,
                     ):
-                        queue.append(
-                            (clean_link, depth + 1)
-                        )
+                        queue.append((clean_link, depth + 1))
 
         except Exception as exc:
             error_records.append(
                 {
-                    "Source_Group": (
-                        "ING_Public_Sector_Guidance"
-                    ),
+                    "Source_Group": "ING_Public_Sector_Guidance",
                     "Source_URL": normalized_url,
                     "Error": str(exc),
                     "Occurred_UTC": utc_now(),
@@ -954,11 +793,10 @@ def collect_ing_sector_guidance(
 
 
 def evidence_matches_topic(
-    evidence_text: str,
-    topic_keywords: list[str],
+    evidence_text: str, topic_keywords: list[str]
 ) -> list[str]:
+    """Return the subset of topic keywords found in the given evidence text."""
     lowered = evidence_text.lower()
-
     return [
         keyword
         for keyword in topic_keywords
@@ -967,10 +805,9 @@ def evidence_matches_topic(
 
 
 def concise_excerpt(
-    text: str,
-    matched_keywords: list[str],
-    maximum_length: int = 1200,
+    text: str, matched_keywords: list[str], maximum_length: int = 1200
 ) -> str:
+    """Return a compact excerpt centred on the first matched keyword."""
     normalized = re.sub(r"\s+", " ", text).strip()
 
     if not normalized:
@@ -990,11 +827,7 @@ def concise_excerpt(
     )
 
     start = max(0, first_position - 250)
-    end = min(
-        len(normalized),
-        start + maximum_length,
-    )
-
+    end = min(len(normalized), start + maximum_length)
     return normalized[start:end]
 
 
@@ -1002,88 +835,59 @@ def build_customer_ing_mapping(
     evidence_records: list[dict[str, Any]],
     mapping_topics: dict[str, list[str]],
 ) -> list[dict[str, Any]]:
-    """
-    Map customer public evidence to ING public sector guidance.
-
-    Every ING guidance item is retained. If no corresponding customer
-    evidence exists, customer columns remain blank.
-    """
+    """Map customer evidence to ING guidance per topic keywords from sectors.yaml."""
     customer_evidence = [
         item
         for item in evidence_records
-        if item.get("Source_Group") in {
-            "Customer_Public",
-            "Customer_Public_Upload",
-        }
+        if item.get("Source_Group")
+        in {"Customer_Public", "Customer_Public_Upload"}
     ]
 
     ing_evidence = [
         item
         for item in evidence_records
-        if item.get("Source_Group")
-        == "ING_Public_Sector_Guidance"
+        if item.get("Source_Group") == "ING_Public_Sector_Guidance"
     ]
 
     mappings: list[dict[str, Any]] = []
 
     for topic_name, keywords in mapping_topics.items():
-        topic_ing_evidence: list[
-            tuple[dict[str, Any], list[str]]
-        ] = []
-
-        for ing_item in ing_evidence:
-            matched = evidence_matches_topic(
-                str(ing_item.get("Evidence_Text", "")),
-                keywords,
-            )
-
-            if matched:
-                topic_ing_evidence.append(
-                    (ing_item, matched)
+        topic_ing_evidence = [
+            (item, matched)
+            for item in ing_evidence
+            if (
+                matched := evidence_matches_topic(
+                    str(item.get("Evidence_Text", "")), keywords
                 )
+            )
+        ]
 
         if not topic_ing_evidence:
             continue
 
-        topic_customer_evidence: list[
-            tuple[dict[str, Any], list[str]]
-        ] = []
-
-        for customer_item in customer_evidence:
-            matched = evidence_matches_topic(
-                str(
-                    customer_item.get(
-                        "Evidence_Text",
-                        "",
-                    )
-                ),
-                keywords,
-            )
-
-            if matched:
-                topic_customer_evidence.append(
-                    (customer_item, matched)
+        topic_customer_evidence = [
+            (item, matched)
+            for item in customer_evidence
+            if (
+                matched := evidence_matches_topic(
+                    str(item.get("Evidence_Text", "")), keywords
                 )
+            )
+        ]
 
         best_customer_item = None
         best_customer_matches: list[str] = []
-
         if topic_customer_evidence:
             best_customer_item, best_customer_matches = max(
-                topic_customer_evidence,
-                key=lambda item: len(item[1]),
+                topic_customer_evidence, key=lambda item: len(item[1])
             )
 
         for ing_item, ing_matches in topic_ing_evidence:
-            customer_found = (
-                best_customer_item is not None
-            )
+            customer_found = best_customer_item is not None
 
             mappings.append(
                 {
-                    "Mapping_ID": (
-                        f"MAP{len(mappings) + 1:04d}"
-                    ),
+                    "Mapping_ID": f"MAP{len(mappings) + 1:04d}",
                     "Topic": topic_name,
                     "Mapping_Status": (
                         "Mapped"
@@ -1091,12 +895,7 @@ def build_customer_ing_mapping(
                         else "No customer mapping found"
                     ),
                     "Matched_Keywords": ", ".join(
-                        sorted(
-                            set(
-                                ing_matches
-                                + best_customer_matches
-                            )
-                        )
+                        sorted(set(ing_matches + best_customer_matches))
                     ),
                     "Customer_Source_ID": (
                         best_customer_item["Source_ID"]
@@ -1115,30 +914,19 @@ def build_customer_ing_mapping(
                     ),
                     "Customer_Evidence": (
                         concise_excerpt(
-                            best_customer_item[
-                                "Evidence_Text"
-                            ],
+                            best_customer_item["Evidence_Text"],
                             best_customer_matches,
                         )
                         if customer_found
                         else ""
                     ),
-                    "ING_Source_ID": ing_item[
-                        "Source_ID"
-                    ],
-                    "ING_Source_URL": ing_item[
-                        "Source_URL"
-                    ],
+                    "ING_Source_ID": ing_item["Source_ID"],
+                    "ING_Source_URL": ing_item["Source_URL"],
                     "ING_Page": ing_item["Page"],
-                    "ING_Guidance_Evidence": (
-                        concise_excerpt(
-                            ing_item["Evidence_Text"],
-                            ing_matches,
-                        )
+                    "ING_Guidance_Evidence": concise_excerpt(
+                        ing_item["Evidence_Text"], ing_matches
                     ),
-                    "Interpretation_Status": (
-                        "Evidence mapping only"
-                    ),
+                    "Interpretation_Status": "Evidence mapping only",
                 }
             )
 
@@ -1153,6 +941,7 @@ def process_uploaded_pdfs(
     evidence_records: list[dict[str, Any]],
     error_records: list[dict[str, Any]],
 ) -> None:
+    """Validate and extract evidence from RM-uploaded public PDF files."""
     for original_name, content in uploaded_pdfs:
         try:
             if len(content) > settings.max_download_bytes:
@@ -1162,28 +951,25 @@ def process_uploaded_pdfs(
                 raise ValueError("Uploaded file is not a PDF.")
 
             title, pages, tables = extract_pdf(
-                content,
-                settings.max_text_characters_per_source,
+                content, settings.max_text_characters_per_source
             )
 
             source_url = f"RM uploaded public file: {original_name}"
 
             source_id = add_source(
-            source_records=source_records,
-            evidence_records=evidence_records,
-            source_url=source_url,
-            title=title or original_name,
-            source_type="UPLOADED_PDF",
-            source_group="Customer_Public_Upload",
-            content_type="application/pdf",
-            content=content,
-            text_records=pages,
-            table_records=tables,
+                source_records=source_records,
+                evidence_records=evidence_records,
+                source_url=source_url,
+                title=title or original_name,
+                source_type="UPLOADED_PDF",
+                source_group="Customer_Public_Upload",
+                content_type="application/pdf",
+                content=content,
+                text_records=pages,
+                table_records=tables,
             )
 
-            stored_name = (
-                f"{source_id}_{safe_name(original_name)}"
-            )
+            stored_name = f"{source_id}_{safe_name(original_name)}"
             (raw_directory / stored_name).write_bytes(content)
 
         except Exception as exc:
@@ -1196,13 +982,8 @@ def process_uploaded_pdfs(
             )
 
 
-def find_nearest_year(
-    text: str,
-    value_position: int,
-) -> str:
-    """
-    Return the year nearest to a numeric value in the evidence excerpt.
-    """
+def find_nearest_year(text: str, value_position: int) -> str:
+    """Return the year token nearest to a numeric value within an excerpt."""
     year_matches = list(YEAR_PATTERN.finditer(text))
 
     if not year_matches:
@@ -1210,23 +991,15 @@ def find_nearest_year(
 
     nearest_match = min(
         year_matches,
-        key=lambda match: abs(
-            match.start() - value_position
-        ),
+        key=lambda match: abs(match.start() - value_position),
     )
-
     return nearest_match.group(1)
 
 
 def find_numeric_mentions(
     evidence_records: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
-    """
-    Find numeric mentions near ESG-related evidence.
-
-    These are not verified KPIs. Agent 1 must use the source excerpt,
-    source URL and page before presenting any value as a company fact.
-    """
+    """Extract deduplicated numeric value candidates with context from evidence."""
     records: list[dict[str, Any]] = []
 
     general_value_pattern = re.compile(
@@ -1273,24 +1046,16 @@ def find_numeric_mentions(
             context_end = min(len(text), match.end() + 500)
 
             excerpt = re.sub(
-                r"\s+",
-                " ",
-                text[context_start:context_end],
+                r"\s+", " ", text[context_start:context_end]
             ).strip()
 
-            value_position_in_excerpt = (
-                match.start() - context_start
-            )
-            
             year = find_nearest_year(
-                excerpt,
-                value_position_in_excerpt,
+                excerpt, match.start() - context_start
             )
+
             records.append(
                 {
-                    "Candidate_ID": (
-                        f"V{len(records) + 1:05d}"
-                    ),
+                    "Candidate_ID": f"V{len(records) + 1:05d}",
                     "Value": match.group("value"),
                     "Unit": match.group("unit"),
                     "Year": year,
@@ -1298,9 +1063,7 @@ def find_numeric_mentions(
                     "Source_URL": evidence["Source_URL"],
                     "Page": evidence["Page"],
                     "Evidence_Excerpt": excerpt,
-                    "Extraction_Method": evidence[
-                        "Evidence_Type"
-                    ],
+                    "Extraction_Method": evidence["Evidence_Type"],
                     "Evidence_Status": "AutomaticallyExtracted",
                 }
             )
@@ -1317,7 +1080,6 @@ def find_numeric_mentions(
             record["Page"],
             record["Evidence_Excerpt"],
         )
-
         if key not in seen:
             seen.add(key)
             unique_records.append(record)
@@ -1335,61 +1097,37 @@ def write_excel(
     sector_reference: pd.DataFrame,
     error_records: list[dict[str, Any]],
 ) -> None:
+    """Write all record sets into a formatted multi-sheet Excel workbook."""
     request_data = asdict(request)
-
     request_data["approved_source_urls"] = "\n".join(
         request.approved_source_urls
     )
-    
+
     customer_sources = [
-    source
-    for source in source_records
-    if source.get("Source_Group") in {
-        "Customer_Public",
-        "Customer_Public_Upload",
-    }
-]
+        source
+        for source in source_records
+        if source.get("Source_Group")
+        in {"Customer_Public", "Customer_Public_Upload"}
+    ]
 
     ing_sources = [
         source
         for source in source_records
-        if source.get("Source_Group")
-        == "ING_Public_Sector_Guidance"
+        if source.get("Source_Group") == "ING_Public_Sector_Guidance"
     ]
-    
+
     tables = {
         "Request": pd.DataFrame([request_data]),
-        "Customer_Sources": pd.DataFrame(
-            customer_sources
-        ),
-        "ING_Sector_Guidance": pd.DataFrame(
-            ing_sources
-        ),
+        "Customer_Sources": pd.DataFrame(customer_sources),
+        "ING_Sector_Guidance": pd.DataFrame(ing_sources),
         "Evidence": pd.DataFrame(evidence_records),
-        "Value_Candidates": pd.DataFrame(
-            value_candidates
-        ),
-        "Customer_ING_Mapping": pd.DataFrame(
-            customer_ing_mapping
-        ),
+        "Value_Candidates": pd.DataFrame(value_candidates),
+        "Customer_ING_Mapping": pd.DataFrame(customer_ing_mapping),
         "Sector_Source_Guidance": sector_reference,
         "Errors": pd.DataFrame(error_records),
     }
-        
-    
-    # tables = {
-    #     "Request": pd.DataFrame([request_data]),
-    #     "Sources": pd.DataFrame(source_records),
-    #     "Evidence": pd.DataFrame(evidence_records),
-    #     "Value_Candidates": pd.DataFrame(value_candidates),
-    #     "Sector_Source_Guidance": sector_reference,
-    #     "Errors": pd.DataFrame(error_records),
-    # }
 
-    with pd.ExcelWriter(
-        workbook_path,
-        engine="openpyxl",
-    ) as writer:
+    with pd.ExcelWriter(workbook_path, engine="openpyxl") as writer:
         for sheet_name, table in tables.items():
             if table.empty:
                 table = pd.DataFrame(
@@ -1400,11 +1138,7 @@ def write_excel(
                     }
                 )
 
-            table.to_excel(
-                writer,
-                sheet_name=sheet_name,
-                index=False,
-            )
+            table.to_excel(writer, sheet_name=sheet_name, index=False)
 
         for worksheet in writer.book.worksheets:
             worksheet.freeze_panes = "A2"
@@ -1412,20 +1146,12 @@ def write_excel(
 
             for column in worksheet.columns:
                 column_letter = column[0].column_letter
-
                 maximum_length = max(
-                    (
-                        len(str(cell.value or ""))
-                        for cell in column[:100]
-                    ),
+                    (len(str(cell.value or "")) for cell in column[:100]),
                     default=12,
                 )
-
-                worksheet.column_dimensions[
-                    column_letter
-                ].width = min(
-                    max(maximum_length + 2, 12),
-                    60,
+                worksheet.column_dimensions[column_letter].width = min(
+                    max(maximum_length + 2, 12), 60
                 )
 
 
@@ -1439,6 +1165,7 @@ def write_markdown(
     customer_ing_mapping: list[dict[str, Any]],
     error_records: list[dict[str, Any]],
 ) -> None:
+    """Write the full, untruncated evidence pack as a human-readable markdown file."""
     lines = [
         f"# Public ESG Evidence Pack: {request.customer_name}",
         "",
@@ -1508,12 +1235,7 @@ def write_markdown(
             ]
         )
 
-    lines.extend(
-        [
-            "## Automatically extracted value candidates",
-            "",
-        ]
-    )
+    lines.extend(["## Automatically extracted value candidates", ""])
 
     if not value_candidates:
         lines.extend(
@@ -1525,20 +1247,15 @@ def write_markdown(
 
     for candidate in value_candidates:
         citation = f"[{candidate['Source_ID']}"
-
         if candidate["Page"] not in ("", None):
             citation += f", page {candidate['Page']}"
-
         citation += "]"
 
         lines.extend(
             [
                 f"### Candidate {candidate['Candidate_ID']}",
                 "",
-                (
-                    f"Value: {candidate['Value']} "
-                    f"{candidate['Unit']}"
-                ),
+                f"Value: {candidate['Value']} {candidate['Unit']}",
                 (
                     "Year: "
                     + (
@@ -1554,43 +1271,35 @@ def write_markdown(
             ]
         )
 
-    lines.extend(["## Extracted public evidence", ""])
-    
     lines.extend(
-    [
-        "## Customer evidence mapped to ING public sector guidance",
-        "",
-        (
-            "This section maps extracted customer evidence to "
-            "topics found on the ING public sector website."
-        ),
-        "",
-        (
-            "A mapping indicates topic similarity only. It does not "
-            "prove alignment with ING policy, eligibility for a "
-            "product, or compliance with a standard."
-        ),
-        "",
-    ]
+        [
+            "## Customer evidence mapped to ING public sector guidance",
+            "",
+            (
+                "This section maps extracted customer evidence to "
+                "topics found on the ING public sector website."
+            ),
+            "",
+            (
+                "A mapping indicates topic similarity only. It does not "
+                "prove alignment with ING policy, eligibility for a "
+                "product, or compliance with a standard."
+            ),
+            "",
+        ]
     )
 
     if not customer_ing_mapping:
         lines.extend(
-            [
-                "No customer-to-ING sector mapping was produced.",
-                "",
-            ]
+            ["No customer-to-ING sector mapping was produced.", ""]
         )
-    
+
     for mapping in customer_ing_mapping:
         lines.extend(
             [
                 f"### {mapping['Topic']}",
                 "",
-                (
-                    "Mapping status: "
-                    f"{mapping['Mapping_Status']}"
-                ),
+                f"Mapping status: {mapping['Mapping_Status']}",
                 "",
                 "Customer evidence:",
                 "",
@@ -1601,8 +1310,7 @@ def write_markdown(
                     f"[{mapping['Customer_Source_ID']}"
                     + (
                         f", page {mapping['Customer_Page']}"
-                        if mapping["Customer_Page"]
-                        not in ("", None)
+                        if mapping["Customer_Page"] not in ("", None)
                         else ""
                     )
                     + "]"
@@ -1610,10 +1318,7 @@ def write_markdown(
                     else "Customer evidence not found"
                 ),
                 "",
-                (
-                    "Customer source URL: "
-                    f"{mapping['Customer_Source_URL']}"
-                ),
+                f"Customer source URL: {mapping['Customer_Source_URL']}",
                 "",
                 "ING public sector guidance:",
                 "",
@@ -1624,29 +1329,23 @@ def write_markdown(
                     f"[{mapping['ING_Source_ID']}"
                     + (
                         f", page {mapping['ING_Page']}"
-                        if mapping["ING_Page"]
-                        not in ("", None)
+                        if mapping["ING_Page"] not in ("", None)
                         else ""
                     )
                     + "]"
                 ),
                 "",
-                (
-                    "ING source URL: "
-                    f"{mapping['ING_Source_URL']}"
-                ),
+                f"ING source URL: {mapping['ING_Source_URL']}",
                 "",
             ]
         )
-    
 
+    lines.extend(["## Extracted public evidence", ""])
 
     for evidence in evidence_records:
         citation = f"[{evidence['Source_ID']}"
-
         if evidence["Page"] not in ("", None):
             citation += f", page {evidence['Page']}"
-
         citation += "]"
 
         lines.extend(
@@ -1663,20 +1362,10 @@ def write_markdown(
             ]
         )
 
-    lines.extend(
-        [
-            "## Extraction errors and limitations",
-            "",
-        ]
-    )
+    lines.extend(["## Extraction errors and limitations", ""])
 
     if not error_records:
-        lines.extend(
-            [
-                "No extraction errors were recorded.",
-                "",
-            ]
-        )
+        lines.extend(["No extraction errors were recorded.", ""])
     else:
         for error in error_records:
             lines.extend(
@@ -1687,20 +1376,13 @@ def write_markdown(
                 ]
             )
 
-    markdown_path.write_text(
-        "\n".join(lines),
-        encoding="utf-8",
-    )
+    markdown_path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def create_zip(
-    output_directory: Path,
-    zip_path: Path,
-) -> None:
+def create_zip(output_directory: Path, zip_path: Path) -> None:
+    """Bundle every produced output file into a single deflate-compressed ZIP."""
     with zipfile.ZipFile(
-        zip_path,
-        mode="w",
-        compression=zipfile.ZIP_DEFLATED,
+        zip_path, mode="w", compression=zipfile.ZIP_DEFLATED
     ) as archive:
         for file_path in output_directory.rglob("*"):
             if file_path.is_file() and file_path != zip_path:
@@ -1717,12 +1399,12 @@ def build_evidence_pack(
     output_directory: Path,
     uploaded_pdfs: list[tuple[str, bytes]] | None = None,
 ) -> dict[str, Path]:
+    """Orchestrate collection, mapping and output generation for one evidence pack."""
     settings = BuildSettings()
     output_directory.mkdir(parents=True, exist_ok=True)
 
     raw_directory = output_directory / "raw_public_pdfs"
     extracted_directory = output_directory / "extracted_text"
-
     raw_directory.mkdir(exist_ok=True)
     extracted_directory.mkdir(exist_ok=True)
 
@@ -1742,90 +1424,70 @@ def build_evidence_pack(
         evidence,
         errors,
     )
+
     collect_ing_sector_guidance(
-    guidance_url=request.ing_sector_guidance_url,
-    sector_config=sector_config,
-    settings=settings,
-    source_records=sources,
-    evidence_records=evidence,
-    error_records=errors,
-    extracted_directory=extracted_directory,
+        guidance_url=request.ing_sector_guidance_url,
+        sector_config=sector_config,
+        settings=settings,
+        source_records=sources,
+        evidence_records=evidence,
+        error_records=errors,
+        extracted_directory=extracted_directory,
     )
 
     customer_ing_mapping = build_customer_ing_mapping(
         evidence_records=evidence,
-        mapping_topics=sector_config.get(
-            "mapping_topics",
-            {},
-        ),
+        mapping_topics=sector_config.get("mapping_topics", {}),
     )
 
     sector_reference = load_sector_reference(
-        sector_source_file,
-        request.sector,
+        sector_source_file, request.sector
     )
 
     value_candidates = find_numeric_mentions(evidence)
-
     customer_name = safe_name(request.customer_name)
 
-    workbook_path = (
-        output_directory / f"ESG_data_{customer_name}.xlsx"
-    )
-
-    markdown_path = (
-        output_directory / f"ESG_evidence_{customer_name}.md"
-    )
-
+    workbook_path = output_directory / f"ESG_data_{customer_name}.xlsx"
+    markdown_path = output_directory / f"ESG_evidence_{customer_name}.md"
     manifest_path = output_directory / "run_manifest.json"
     instructions_path = output_directory / "README_FOR_RM.txt"
-
     zip_path = (
-        output_directory
-        / f"ESG_Evidence_Pack_{customer_name}.zip"
+        output_directory / f"ESG_Evidence_Pack_{customer_name}.zip"
     )
 
     write_excel(
-    workbook_path=workbook_path,
-    request=request,
-    source_records=sources,
-    evidence_records=evidence,
-    value_candidates=value_candidates,
-    customer_ing_mapping=customer_ing_mapping,
-    sector_reference=sector_reference,
-    error_records=errors,
+        workbook_path=workbook_path,
+        request=request,
+        source_records=sources,
+        evidence_records=evidence,
+        value_candidates=value_candidates,
+        customer_ing_mapping=customer_ing_mapping,
+        sector_reference=sector_reference,
+        error_records=errors,
     )
 
     write_markdown(
-    markdown_path=markdown_path,
-    request=request,
-    source_records=sources,
-    evidence_records=evidence,
-    value_candidates=value_candidates,
-    customer_ing_mapping=customer_ing_mapping,
-    sector_reference=sector_reference,
-    error_records=errors,
-   )
+        markdown_path=markdown_path,
+        request=request,
+        source_records=sources,
+        evidence_records=evidence,
+        value_candidates=value_candidates,
+        customer_ing_mapping=customer_ing_mapping,
+        sector_reference=sector_reference,
+        error_records=errors,
+    )
 
     manifest_path.write_text(
         json.dumps(
             {
                 "request": asdict(request),
                 "generated_utc": utc_now(),
-                "sector_source_catalogue": (
-                    sector_source_file.name
-                ),
+                "sector_source_catalogue": sector_source_file.name,
                 "source_count": len(sources),
                 "evidence_record_count": len(evidence),
-                "value_candidate_count": len(
-                    value_candidates
-                ),
-                "ing_sector_guidance_url": (
-                request.ing_sector_guidance_url
-                ),
-                "customer_ing_mapping_count": len(
-                    customer_ing_mapping
-                ),
+                "value_candidate_count": len(value_candidates),
+                "ing_sector_guidance_url": request.ing_sector_guidance_url,
+                "customer_ing_mapping_count": len(customer_ing_mapping),
                 "error_count": len(errors),
                 "important_limitations": [
                     (
@@ -1840,6 +1502,11 @@ def build_evidence_pack(
                     (
                         "Scanned PDFs may require OCR and may "
                         "not produce extractable evidence."
+                    ),
+                    (
+                        "Excel cells are truncated at 32,767 characters; "
+                        "full evidence is preserved in extracted_text/ "
+                        "and the markdown file."
                     ),
                 ],
             },
@@ -1863,15 +1530,15 @@ def build_evidence_pack(
             "source families, not verified customer facts.\n\n"
             "The Value_Candidates sheet contains automatically "
             "extracted values. Values must be used together with "
-            "their source URL, page and evidence excerpt.\n"
+            "their source URL, page and evidence excerpt.\n\n"
+            "Where an Excel cell shows '[truncated for Excel]', the "
+            "full untruncated text is available in the extracted_text/ "
+            "folder and in ESG_evidence_<customer>.md.\n"
         ),
         encoding="utf-8",
     )
 
-    create_zip(
-        output_directory=output_directory,
-        zip_path=zip_path,
-    )
+    create_zip(output_directory=output_directory, zip_path=zip_path)
 
     return {
         "excel": workbook_path,

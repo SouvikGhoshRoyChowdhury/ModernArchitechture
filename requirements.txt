@@ -1,0 +1,9 @@
+beautifulsoup4
+openpyxl
+pandas
+pdfplumber
+PyMuPDF
+PyInstaller
+PyYAML
+requests
+streamlit

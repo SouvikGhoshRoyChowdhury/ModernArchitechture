@@ -1,0 +1,360 @@
+sectors:
+  Food_Agri:
+    display_name: "Food & Agri"   # Agri including dairy for pilot
+    # ESG Boederijproducten: "ESG Boederijproducten"
+    # ESG Fruitteelt_en_tuinbouw: "ESG Fruitteelt en tuinbouw"
+    # ESG Veeteelt_en_Veetransport: "ESG Veeteelt en Veetransport"
+    # ESG Vleesverwerking: "ESG Vleesverwerking"
+    folder_name: "Food_Agri"
+
+    ing_sector_guidance_url: ""
+
+    excluded_ing_content_keywords:
+      - podcast
+      - podcasts
+      - audio
+      - spotify
+      - apple podcast
+      - luisteren
+      - beluister
+
+    keywords:
+      - sustainability
+      - esg
+      - environmental
+      - climate
+      - climate change
+      - greenhouse gas
+      - ghg
+      - emissions
+      - scope 1
+      - scope 2
+      - scope 3
+      - net zero
+      - transition plan
+      - agriculture
+      - regenerative agriculture
+      - biodiversity
+      - deforestation
+      - water
+      - food waste
+      - responsible sourcing
+      - supply chain
+      - human rights
+      - annual report
+      - sustainability report
+
+    mapping_topics:
+      Climate_and_Emissions:
+        - climate
+        - emissions
+        - greenhouse gas
+        - ghg
+        - scope 1
+        - scope 2
+        - scope 3
+        - net zero
+
+      Nature_and_Biodiversity:
+        - biodiversity
+        - nature
+        - deforestation
+        - land use
+
+      Sustainable_Agriculture:
+        - regenerative agriculture
+        - sustainable agriculture
+        - farming
+        - agriculture
+
+      Water:
+        - water
+        - irrigation
+        - water consumption
+
+      Supply_Chain:
+        - supply chain
+        - responsible sourcing
+        - sustainable sourcing
+        - human rights
+
+  Transport_Logistics:
+    display_name: "Transport, Logistics & Mobility"
+    folder_name: "Transport_Logistics"
+
+    ing_sector_guidance_url: "https://www.ing.nl/zakelijk/sector/transport-logistics-mobility"
+    #https://www.ing.nl/zakelijk/sector/public
+    ing_sector_guidance_max_pages: 30
+    ing_sector_guidance_max_depth: 2
+
+    excluded_ing_content_keywords:
+      - podcast
+      - podcasts
+      - audio
+      - spotify
+      - apple podcast
+      - luisteren
+      - beluister
+
+    keywords:
+      - sustainability
+      - esg
+      - environmental
+      - climate
+      - climate change
+      - greenhouse gas
+      - ghg
+      - emissions
+      - scope 1
+      - scope 2
+      - scope 3
+      - net zero
+      - transition plan
+      - science based targets
+      - sbti
+      - transport
+      - logistics
+      - mobility
+      - road freight
+      - passenger transport
+      - shipping
+      - maritime
+      - aviation
+      - fleet emissions
+      - fleet transition
+      - electric vehicles
+      - alternative fuels
+      - sustainable aviation fuel
+      - fuel efficiency
+      - logistics efficiency
+      - modal shift
+      - poseidon principles
+      - international maritime organization
+      - circular economy
+      - digitalisation
+      - innovation
+      - annual report
+      - integrated report
+      - sustainability report
+      - esg report
+      - climate report
+
+    mapping_topics:
+      Climate_and_Emissions:
+        - climate
+        - emissions
+        - greenhouse gas
+        - ghg
+        - scope 1
+        - scope 2
+        - scope 3
+        - carbon
+        - co2
+        - net zero
+
+      Fleet_Transition:
+        - fleet
+        - fleet transition
+        - electric vehicle
+        - electric truck
+        - zero emission vehicle
+        - low emission vehicle
+        - charging infrastructure
+        - battery electric
+        - hydrogen
+
+      Alternative_Fuels:
+        - alternative fuel
+        - biofuel
+        - hydrogen
+        - sustainable aviation fuel
+        - renewable fuel
+        - e-fuel
+        - synthetic fuel
+
+      Road_Freight:
+        - road freight
+        - truck
+        - trailer
+        - heavy duty vehicle
+        - vrachtwagen
+        - freight transport
+
+      Maritime_and_Shipping:
+        - maritime
+        - shipping
+        - vessel
+        - ship
+        - inland shipping
+        - inland navigation
+        - poseidon principles
+        - international maritime organization
+        - imo
+
+      Aviation:
+        - aviation
+        - aircraft
+        - airline
+        - sustainable aviation fuel
+        - airport
+
+      Logistics_Efficiency:
+        - logistics efficiency
+        - route optimisation
+        - load factor
+        - modal shift
+        - supply chain efficiency
+        - warehouse
+        - distribution
+
+      Innovation_and_Digitalisation:
+        - innovation
+        - digitalisation
+        - digitisation
+        - automation
+        - artificial intelligence
+        - data
+        - technology
+
+      Circularity:
+        - circular economy
+        - circularity
+        - reuse
+        - recycling
+        - lifecycle
+        - material efficiency
+
+      Transition_Plan:
+        - transition plan
+        - decarbonisation pathway
+        - climate roadmap
+        - investment plan
+        - target
+        - milestone
+
+  Public:
+    display_name: "Public (Woningcorporaties)"
+    folder_name: "Public"
+
+    ing_sector_guidance_url: "https://www.ing.nl/zakelijk/sector/public/facts--figures-public-woningcorporaties"
+    ing_sector_guidance_max_pages: 30
+    ing_sector_guidance_max_depth: 2
+
+    excluded_ing_content_keywords:
+      - podcast
+      - podcasts
+      - audio
+      - spotify
+      - apple podcast
+      - luisteren
+      - beluister
+
+    keywords:
+      - sustainability
+      - esg
+      - environmental
+      - climate
+      - climate change
+      - greenhouse gas
+      - ghg
+      - emissions
+      - scope 1
+      - scope 2
+      - scope 3
+      - net zero
+      - transition plan
+      - national performance agreements
+      - npa
+      - residential care task
+      - energy transition
+      - portfolio strategy
+      - affordability
+      - new construction production
+      - financial continuity
+      - daeb
+      - non-daeb
+      - quality of life
+      - housing corporations
+      - social housing
+      - affordable housing
+      - real estate
+      - building performance
+      - energy efficiency
+      - renovation
+      - decarbonisation
+      - circular economy
+      - tenant engagement
+      - social impact
+      - annual report
+      - integrated report
+      - sustainability report
+      - esg report
+
+    mapping_topics:
+      Climate_and_Emissions:
+        - climate
+        - emissions
+        - greenhouse gas
+        - ghg
+        - scope 1
+        - scope 2
+        - scope 3
+        - carbon
+        - co2
+        - net zero
+        - decarbonisation
+
+      Energy_Transition:
+        - energy transition
+        - renewable energy
+        - energy efficiency
+        - heat transition
+        - solar panels
+        - heat pumps
+        - district heating
+        - insulation
+
+      Portfolio_Strategy:
+        - portfolio strategy
+        - real estate portfolio
+        - asset management
+        - building stock
+        - property management
+
+      Affordability_and_Social_Impact:
+        - affordability
+        - affordable housing
+        - social housing
+        - quality of life
+        - tenant engagement
+        - social impact
+        - residential care
+
+      Construction_and_Renovation:
+        - new construction
+        - construction production
+        - renovation
+        - retrofit
+        - building performance
+        - building quality
+
+      Financial_Continuity:
+        - financial continuity
+        - financial sustainability
+        - investment capacity
+        - financial performance
+
+      Circular_Economy:
+        - circular economy
+        - circularity
+        - material reuse
+        - sustainable materials
+        - lifecycle
+        - circular building
+
+      Performance_Agreements:
+        - national performance agreements
+        - npa
+        - daeb
+        - non-daeb
+        - sector agreements
